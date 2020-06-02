@@ -1,26 +1,25 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { Square } from 'components/Square'
+
 
 const Board = styled.div`
   display: grid;
-  grid-template-columns: 70px 70px 70px 70px 70px 70px 70px 70px;
-  grid-template-rows: 70px 70px 70px 70px 70px 70px 70px 70px;
+  grid-template-columns: 100px 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px 100px;
   border: 3px solid red;
 `
 
-const Tile = styled.button`
-  box-sizing: border-box;
-  padding: 10px;
-  width: 100%;
-  margin: 0;
-  background-color: yellow;
-  border: black;
-`
 export const Puzzle = () => {
+
+  const squares = useSelector((store) => store.game.squares)
+
   return (
     <Board>
-      <Tile />
+      {squares.map((value, index) => (
+        <Square key={index} value={value} index={index} />
+      ))}
     </Board>
   )
-
 }

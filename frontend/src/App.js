@@ -1,8 +1,21 @@
 import React from 'react';
+import { Provider } from 'react-redux'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { game } from './reducers/game'
 import { Puzzle } from 'components/Puzzle'
+
+
+const reducer = combineReducers({
+  game: game.reducer
+})
+
+const store = configureStore({ reducer })
 
 export const App = () => {
   return (
-    <Puzzle />
+    <Provider store={store}>
+      <Puzzle />
+
+    </Provider>
   );
 };
