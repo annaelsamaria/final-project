@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { game } from 'reducers/game'
 import styled from 'styled-components'
 
@@ -14,9 +14,9 @@ const Tile = styled.button`
   border-radius: 10px;
 `
 
-export const Square = ({ value, index }) => {
+export const Square = ({ index }) => {
   const dispatch = useDispatch()
-
+  const square = useSelector((store) => store.game.squares[index])
   const handleClick = () => {
     dispatch(game.actions.captureSquare({ index }))
     // TODO send the captureSquare action
@@ -24,8 +24,9 @@ export const Square = ({ value, index }) => {
   return (
     <Tile
       type="button"
-      onClick={handleClick}>
-      <h3>Value</h3>
+      onClick={handleClick}
+    >
+      <h3>{square.name}</h3>
     </Tile>
   )
 }

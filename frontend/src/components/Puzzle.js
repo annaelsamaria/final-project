@@ -6,20 +6,48 @@ import { Square } from 'components/Square'
 
 const Board = styled.div`
   display: grid;
-  grid-template-columns: 100px 100px 100px 100px;
-  grid-template-rows: 100px 100px 100px 100px;
+  grid-template-columns: 100px 100px;
   border: 3px solid red;
+  padding: 20px;
 `
 
-export const Puzzle = () => {
+const initialBoard = [
+  ["A", null],
+]
 
-  const squares = useSelector((store) => store.game.squares)
+export const Puzzle = () => {
+  const [board, setBoard] = useState(initialBoard)
+
+  const getValueOfTile = (row, column) => {
+    return board[row][column]
+  }
+
+
+  const handleTileClick = (rowIndex, columnIndex) => {
+    console.log(rowIndex, columnIndex)
+    if (
+      rowIndex > 0 && getValueOfTile(rowIndex - 1, columnIndex) === null
+    ) {
+      return (
+        console.log("yes")
+      )
+    }
+  }
 
   return (
     <Board>
-      {squares.map((value, index) => (
-        <Square key={index} value={value} index={index} />
+      {board.map((row, rowIndex) => (
+        row.map((column, columnIndex) => (
+          <button onClick={() => { handleTileClick(rowIndex, columnIndex) }}>{column}</button>
+        ))
       ))}
     </Board>
   )
 }
+
+//  const squares = useSelector((store) => store.game.squares)
+// <Board>
+// {squares.map((value, index, name) => (
+//   <Square key={index} value={value} index={index} name={name} />
+// ))}
+// </Board>
