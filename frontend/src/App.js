@@ -11,8 +11,8 @@ import { SignIn } from 'pages/SignIn'
 export const App = () => {
   return (
     <BrowserRouter>
+      <Nav />
       <main>
-        <Nav />
         <Switch>
           <Route path="/" exact>
             <Home />
