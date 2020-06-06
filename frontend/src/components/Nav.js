@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components/macro';
 import { Link, NavLink } from 'react-router-dom'
 
-const Navbar = styled.header`
+const Navbar = styled.nav`
   height: 100px;
   padding: 0 20px;
-  background: #8CA4B3;
+  // background: #8CA4B3;
   display: flex;
   align-items: center;
   justify-content: space-between;

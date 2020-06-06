@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import productData from './data/ceramics.json'
 import mongoose from 'mongoose';
 import crypto from 'crypto';
 import bcrypt from 'bcrypt-nodejs';
@@ -56,8 +57,28 @@ app.use(bodyParser.json());
 
 // Start defining your routes here
 app.get('/', (req, res) => {
-  res.send('Hello Auth!');
+  res.send('Hello World!');
 });
+
+// With "Query Parameter"
+// localhost:8080/products?category=vases
+
+app.get('/products', (req, res) => {
+  const { category } = req.query
+
+  if (category) {
+    let getCategory = productData.filter((item) =>
+      item.category.toString().toLowerCase().includes(category)
+    )
+    if (getCategory.length > 0) {
+      res.json(getCategory)
+    } else {
+      res.status(404).json({ message: 'No product found' })
+    }
+  }
+
+  res.json(getCategory)
+})
 
 // SIGN UP
 app.post('/users', async (req, res) => {
