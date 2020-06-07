@@ -24,6 +24,7 @@ export const Nav = () => {
         <MenuItem to="/shop">Shop</MenuItem>
         <MenuItem to="/about">About</MenuItem>
         <MenuItem to="/signin">Sign in</MenuItem>
+        <MenuItem to="/checkout">Cart</MenuItem>
       </div>
     </Navbar>
   )

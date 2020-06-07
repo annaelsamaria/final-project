@@ -1,5 +1,4 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro';
 
@@ -14,12 +13,13 @@ const ProductImg = styled.img`
 export const Product = ({ product }) => {
   return (
     <ProductCard>
-      <Link to={`/product/${product.id}`} key={product.id}>
+      <Link to={`/shop/product/${product.id}`} key={product.title}>
         <ProductImg src={product.main_img} aria-label={product.title}></ProductImg>
         <div>
           <p>{product.title}</p>
           <p>{product.price}:-</p>
         </div>
+        <button>shop now</button>
       </Link>
     </ProductCard>
   )

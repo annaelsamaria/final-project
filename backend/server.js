@@ -60,9 +60,8 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-// With "Query Parameter"
+// With "Query Parameter
 // localhost:8080/products?category=vases
-
 app.get('/products', (req, res) => {
   const { category } = req.query
 
@@ -73,12 +72,25 @@ app.get('/products', (req, res) => {
     if (getCategory.length > 0) {
       res.json(getCategory)
     } else {
-      res.status(404).json({ message: 'No product found' })
+      res.status(404).json({ message: 'No products found' })
     }
   }
-
-  res.json(getCategory)
+  res.json(productData)
 })
+
+// single product
+app.get('/products/:id', (req, res) => {
+  const { id } = req.params
+  const productsId = productData.filter((item) => item.id === +id)
+
+  if (productsId.length > 0) {
+    res.json(productsId)
+  }
+  else {
+    res.status(404).send({ message: 'No product found' })
+  }
+})
+
 
 // SIGN UP
 app.post('/users', async (req, res) => {

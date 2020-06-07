@@ -19,6 +19,7 @@ const Text = styled.p`
   color: black;
 `
 
+
 export const Home = () => {
   return (
     <HomePage>

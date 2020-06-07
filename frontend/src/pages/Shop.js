@@ -1,5 +1,4 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
 import { Product } from '../components/Product'
 import styled from 'styled-components/macro';
 
@@ -9,12 +8,23 @@ const ProductsContainer = styled.section`
 `
 
 export const Shop = () => {
-  // TODO - fetch all products from the store
-  const allProducts = useSelector((store) => store.products)
+  const PRODUCTS_API = "http://localhost:8080/products"
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    fetch(PRODUCTS_API)
+      .then(res => res.json())
+      .then((json) => {
+        setProducts(json)
+      })
+  }, [])
+
+
+  //add filtered categories as "buttons", also a "see all"
 
   return (
     <ProductsContainer>
-      {allProducts.map((product) => (
+      {products.map((product) => (
         <Product key={product.id} product={product} />
       ))}
     </ProductsContainer>
