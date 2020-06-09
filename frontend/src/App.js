@@ -9,11 +9,11 @@ import { ProductDetails } from 'pages/ProductDetails'
 import { SignIn } from 'pages/SignIn'
 import { Cart } from 'pages/Cart'
 import { Nav } from 'components/Nav'
-import { Footer } from 'components/footer'
+import { Footer } from 'components/Footer'
 import { cart } from 'reducers/cart'
 
 const reducer = combineReducers({
-  cart: cart.reducer,
+  cart: cart.reducer
 })
 
 const store = configureStore({ reducer })

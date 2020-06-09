@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Product } from '../components/Product'
+import { ProductCard } from '../components/ProductCard'
 import styled from 'styled-components/macro';
 
 const ProductsContainer = styled.section`
@@ -25,7 +25,7 @@ export const Shop = () => {
   return (
     <ProductsContainer>
       {products.map((product) => (
-        <Product key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} />
       ))}
     </ProductsContainer>
   )
