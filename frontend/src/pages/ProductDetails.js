@@ -4,11 +4,15 @@ import styled from 'styled-components/macro';
 import { cart } from '../reducers/cart'
 import { useDispatch } from 'react-redux';
 import { HeartIcon } from '../lib/HeartIcon'
+import { Button } from '../lib/Button'
 
 
 const ProductContainer = styled.article`
   width: 500px;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
 `
 const ProductImg = styled.img`
   width: 100%;
@@ -54,14 +58,17 @@ export const ProductDetails = () => {
         {item.map((product) =>
           <div key={product.id}>
             <ProductImg src={product.main_img} alt={product.title} />
-            <h2>{product.title}</h2>
-            <p>{product.price}:-</p>
-            <p>description</p>
-            <button
-              type="button"
-              onClick={() => dispatch(cart.actions.addItem(product))}>ad to cart
+            <div>
+              <h2>{product.title}</h2>
+              <p>{product.price}:-</p>
+              <p>description</p>
+              {/* <Button content="add to cart" /> */}
+              <button
+                type="button"
+                onClick={() => dispatch(cart.actions.addItem(product))}>ad to cart
              </button>
-            <HeartIcon />
+              <HeartIcon />
+            </div>
             <div>
               <ProductImg src={product.second_img} alt={product.title} />
               <ProductImg src={product.third_img} alt={product.title} />

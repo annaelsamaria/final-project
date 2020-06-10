@@ -14,6 +14,10 @@ const MenuItem = styled(NavLink)`
   margin-left: 10px;
   text-decoration: none;
   color: black;
+
+  &:hover {
+    opacity: 0.5;
+  }
 `
 
 export const Nav = () => {

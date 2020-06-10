@@ -11,9 +11,12 @@ import { Cart } from 'pages/Cart'
 import { Nav } from 'components/Nav'
 import { Footer } from 'components/Footer'
 import { cart } from 'reducers/cart'
+import { user } from 'reducers/user'
+
 
 const reducer = combineReducers({
-  cart: cart.reducer
+  cart: cart.reducer,
+  user: user.reducer
 })
 
 const store = configureStore({ reducer })

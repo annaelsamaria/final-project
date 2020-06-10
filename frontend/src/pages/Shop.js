@@ -3,8 +3,10 @@ import { ProductCard } from '../components/ProductCard'
 import styled from 'styled-components/macro';
 
 const ProductsContainer = styled.section`
+  width: 80%;
   display: flex;
   flex-flow: wrap;
+  margin: 0 auto;
 `
 
 export const Shop = () => {
