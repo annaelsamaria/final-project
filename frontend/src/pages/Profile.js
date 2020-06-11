@@ -1,11 +1,9 @@
 import React from 'react';
-import { user, logout, loggedoutMessage } from '../reducers/user';
+import { logout } from '../reducers/user';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const Profile = () => {
   const dispatch = useDispatch();
-  const accessToken = useSelector((store) => store.user.login.accessToken);
-  const userId = useSelector((store) => store.user.login.userId);
   const errorMessage = useSelector((store) => store.user.login.errorMessage);
   const loginMessage = useSelector((store) => store.user.login.loginMessage);
 
@@ -17,6 +15,7 @@ export const Profile = () => {
       <button type='submit' onClick={(e) => dispatch(logout())}>
         LOG OUT
       </button>
+      <h2>Your saved items: </h2>
     </div>
   );
 };

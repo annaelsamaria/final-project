@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { user, login } from './reducers/user';
+import { user, login } from '../reducers/user';
 
 const URL = 'http://localhost:8080/users';
 

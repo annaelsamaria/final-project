@@ -1,6 +1,9 @@
 import React from 'react'
+import styled from 'styled-components/macro';
 import { CartItem } from '../components/CartItem'
 import { useSelector } from 'react-redux'
+
+
 
 export const Cart = () => {
   const products = useSelector((store) => store.cart.items)

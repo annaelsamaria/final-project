@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components/macro';
 import { Link, NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 
 const Navbar = styled.nav`
   height: 100px;
   padding: 0 20px;
-  // background: #8CA4B3;
+  background: #8CA4B3;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,14 +23,18 @@ const MenuItem = styled(NavLink)`
 `
 
 export const Nav = () => {
+  const totalItems = useSelector((store) => (
+    store.cart.items.reduce((total, item) => (total + (item.quantity)), 0)
+  ))
+
   return (
     <Navbar>
       <Link to="/"><img src="../assets/hk240s.png" alt="logo"></img></Link>
       <div>
         <MenuItem to="/shop">Shop</MenuItem>
         <MenuItem to="/about">About</MenuItem>
-        <MenuItem to="/signin">Sign in</MenuItem>
-        <MenuItem to="/checkout">Cart</MenuItem>
+        <MenuItem to="/login">Sign in</MenuItem>
+        <MenuItem to="/checkout">Cart({totalItems})</MenuItem>
       </div>
     </Navbar>
   )

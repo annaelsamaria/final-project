@@ -4,7 +4,7 @@ import styled from 'styled-components/macro';
 import { cart } from '../reducers/cart'
 import { useDispatch } from 'react-redux';
 import { HeartIcon } from '../lib/HeartIcon'
-import { Button } from '../lib/Button'
+import { Nav } from '../components/Nav'
 
 
 const ProductContainer = styled.article`
@@ -16,6 +16,13 @@ const ProductContainer = styled.article`
 `
 const ProductImg = styled.img`
   width: 100%;
+`
+const AddToCart = styled.button`
+  border: 1px solid black;
+  height: 30px;
+  font-size: 16px;
+  background: transparent;
+  padding: 0 20px;
 `
 
 export const ProductDetails = () => {
@@ -49,6 +56,7 @@ export const ProductDetails = () => {
 
   return (
     <div>
+      <Nav />
       <Route path="/shop">
         <Link to="/shop">
           <h3>See all products</h3>
@@ -62,11 +70,11 @@ export const ProductDetails = () => {
               <h2>{product.title}</h2>
               <p>{product.price}:-</p>
               <p>description</p>
-              {/* <Button content="add to cart" /> */}
-              <button
+              <AddToCart
                 type="button"
                 onClick={() => dispatch(cart.actions.addItem(product))}>ad to cart
-             </button>
+             </AddToCart>
+              <p>{product ? "" : "You can only add the same product once"}</p>
               <HeartIcon />
             </div>
             <div>
