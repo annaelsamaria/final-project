@@ -44,7 +44,6 @@ export const SignIn = () => {
                 onChange={(event) => setPassword(event.target.value)}
               />
             </label>
-
             <button type='submit'>LOG IN</button>
           </form>
         )}

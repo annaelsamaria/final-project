@@ -12,14 +12,25 @@ mongoose.Promise = Promise;
 mongoose.set('useCreateIndex', true);
 
 const User = mongoose.model('User', {
-  name: {
+  firstName: {
     type: String,
-    unique: true,
-    required: true,
+  },
+  lastName: {
+    type: String,
+  },
+  address: {
+    type: String,
+  },
+  postalCode: {
+    type: String,
+  },
+  city: {
+    type: String,
   },
   email: {
     type: String,
     unique: true,
+    required: true,
   },
   password: {
     type: String,
@@ -29,7 +40,11 @@ const User = mongoose.model('User', {
     type: String,
     default: () => crypto.randomBytes(128).toString('hex'),
   },
+  savedProducts: {
+    type: [String],
+  }
 });
+
 
 const authenticateUser = async (req, res, next) => {
   try {
@@ -95,8 +110,8 @@ app.get('/products/:id', (req, res) => {
 // SIGN UP
 app.post('/users', async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const user = new User({ name, email, password: bcrypt.hashSync(password) });
+    const { firstName, lastName, address, postalCode, city, email, password } = req.body;
+    const user = new User({ firstName, lastName, address, postalCode, city, email, password: bcrypt.hashSync(password) });
     const newUser = await user.save();
     res.status(201).json({
       message: 'User created.',
@@ -120,8 +135,8 @@ app.get('/users/:id', (req, res) => {
 // LOG IN
 app.post('/sessions', async (req, res) => {
   try {
-    const { name, password } = req.body;
-    const user = await User.findOne({ name });
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
     if (user && bcrypt.compareSync(password, user.password)) {
       res.status(201).json({ userId: user._id, accessToken: user.accessToken });
     } else {
@@ -131,6 +146,18 @@ app.post('/sessions', async (req, res) => {
     res.status(400).json({ message: 'Could not log in', errors: err.errors });
   }
 });
+
+
+//post endpoints savedProducts
+app.post('/users/:id/saved', async (req, res) => {
+  try {
+    const favorite = await Thought.findOneAndUpdate({ savedProducts: req.params.id })
+    res.json(favorite)
+  } catch (err) {
+    res.status(400).json({ message: 'Could not save product', error: err.errors })
+  }
+})
+
 
 // Start the server
 app.listen(port, () => {

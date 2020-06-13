@@ -5,7 +5,8 @@ import { createSlice } from '@reduxjs/toolkit'
 export const cart = createSlice({
   name: 'cart',
   initialState: {
-    items: []
+    items: [],
+    favoriteItems: []
   },
   reducers: {
     addItem: (state, action) => {
@@ -25,6 +26,15 @@ export const cart = createSlice({
       } else if (existingProduct) {
         existingProduct.quantity -= 1
       }
-    }
+    },
+    saveFavorite: (state, action) => {
+      const existingProduct = state.favoriteItems.find((item) => item.id === action.payload.id)
+
+      if (existingProduct) {
+        existingProduct.quantity += 0
+      } else {
+        state.favoriteItems.push({ ...action.payload, quantity: 1 })
+      }
+    },
   }
 })

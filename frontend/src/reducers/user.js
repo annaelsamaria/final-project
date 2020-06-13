@@ -42,12 +42,12 @@ export const user = createSlice({
   },
 });
 
-export const login = (name, password) => {
+export const login = (email, password) => {
   const LOGIN_URL = 'http://localhost:8080/sessions';
   return (dispatch) => {
     fetch(LOGIN_URL, {
       method: 'POST',
-      body: JSON.stringify({ name, password }),
+      body: JSON.stringify({ email, password }),
       headers: { 'content-Type': 'application/json' },
     })
       .then((res) => {

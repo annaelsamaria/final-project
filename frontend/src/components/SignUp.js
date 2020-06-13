@@ -10,7 +10,11 @@ export const SignUp = () => {
   const loggedoutMessage = useSelector(
     (store) => store.user.login.loggedoutMessage
   );
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [address, setAddress] = useState('');
+  const [postalCode, setPostalCode] = useState('');
+  const [city, setCity] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -21,7 +25,7 @@ export const SignUp = () => {
     return (dispatch) => {
       fetch(URL, {
         method: 'POST',
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ firstName, lastName, address, postalCode, city, email, password }),
         headers: { 'content-Type': 'application/json' },
       })
         .then((res) => {
@@ -55,10 +59,41 @@ export const SignUp = () => {
         {!showSummary && (
           <form onSubmit={(e) => dispatch(handleSignup(e))}>
             <label>
-              username
+              First name
               <input
-                value={name}
-                onChange={(event) => setName(event.target.value)}
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Last name
+              <input
+                value={lastName}
+                onChange={(event) => setLastName(event.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Address
+              <input
+                value={address}
+                onChange={(event) => setAddress(event.target.value)}
+                required
+              />
+            </label><label>
+              Postal code
+              <input
+                value={postalCode}
+                onChange={(event) => setPostalCode(event.target.value)}
+                required
+              />
+            </label>
+            <label>
+              City
+              <input
+                value={city}
+                onChange={(event) => setCity(event.target.value)}
                 required
               />
             </label>
@@ -83,7 +118,7 @@ export const SignUp = () => {
             <button type='submit'>SIGN UP</button>
           </form>
         )}
-        {showSummary && <p>You are now signed up {name}</p>}
+        {showSummary && <p>You are now signed up {firstName}</p>}
         {errorMessage && <h1>{errorMessage}</h1>}
         {loggedoutMessage && <h4>you are now logged out!</h4>}
       </div>
