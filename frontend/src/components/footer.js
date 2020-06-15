@@ -13,7 +13,8 @@ const Contact = styled.footer`
 export const Footer = () => {
   return (
     <Contact>
-      <p>Footer</p>
+      <p>HK 240 is a ceramic studio based in Halland. Every item is unique and made by hand.</p>
+      <p>This webshop is a project made during Technigo bootcamp 2020. </p>
     </Contact>
   )
 }

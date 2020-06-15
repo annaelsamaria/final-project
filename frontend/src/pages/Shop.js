@@ -2,37 +2,46 @@ import React, { useEffect, useState } from 'react'
 import { ProductCard } from '../components/ProductCard'
 import styled from 'styled-components/macro';
 import { Nav } from '../components/Nav'
+import getPageByContentType from "../helpers/getPagesByContentType";
+
 
 
 const ShopPage = styled.div`
 `
+
+
 const InfoSection = styled.div`
+  margin: 40px;
   text-align: center;
 `
 const FilterItems = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 20px;
 `
 const ProductsContainer = styled.section`
   width: 80%;
   display: flex;
+  align-items: center;
   flex-flow: wrap;
   margin: 0 auto;
 `
 
 export const Shop = () => {
-  const PRODUCTS_API = "http://localhost:8080/products"
-  const [products, setProducts] = useState([])
+  let [products, setProducts] = useState(Object);
+  let [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(PRODUCTS_API)
-      .then(res => res.json())
-      .then((json) => {
-        setProducts(json)
-      })
-  }, [])
+    getPageByContentType("product").then(data => {
+      setProducts(data);
+      setLoading(false);
+    });
+  }, []);
 
+  if (loading) return <div>Laddar...</div>
+
+  console.log(products)
 
   //add filtered categories-function
 
@@ -43,10 +52,11 @@ export const Shop = () => {
         <h2>shop</h2>
         <p>HK 240 ceramics are designed in Kungsbacka, Sweden. All items are handmade and unique.</p>
         <FilterItems>
-          <p>See all</p>
-          <p>Vases</p>
-          <p>Candle holders</p>
-          <p>Egg cups</p>
+          <button>See all</button>
+          <button>Vases</button>
+          <button>Plates</button>
+          <button>Candle holders</button>
+          <button>Egg cups</button>
         </FilterItems>
       </InfoSection>
       <ProductsContainer>

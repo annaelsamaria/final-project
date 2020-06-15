@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
 import { Nav } from '../components/Nav'
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';

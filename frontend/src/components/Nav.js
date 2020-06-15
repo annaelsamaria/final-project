@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro';
 import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Cart } from 'pages/Cart'
+import { Cart } from '../pages/Cart'
+import { ToggleCart } from '../components/ToggleCart'
 
 
 const Navbar = styled.nav`
@@ -27,29 +28,40 @@ const MenuItem = styled(NavLink)`
   margin-left: 10px;
   text-decoration: none;
   color: black;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
 
   &:hover {
     opacity: 0.5;
   }
 `
-
-const ToggleCart = styled.button`
-  margin-left: 10px;
-  text-decoration: none;
-  border: none;
-  color: black;
-  background: none;
-  font-size: 16px;
-  padding: 0;
-
-&:hover {
-  cursor: pointer;
-  opacity: 0.5;
-}
+const Menu = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-between;
 `
+
+// const ToggleCart = styled.button`
+//   margin-left: 10px;
+//   text-decoration: none;
+//   border: none;
+//   color: black;
+//   background: none;
+//   font-size: 16px;
+//   padding: 0;
+
+// &:hover {
+//   cursor: pointer;
+//   opacity: 0.5;
+// }
+// `
 
 const Logo = styled.img`
   width: 100px;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
 
   &:hover {
     opacity: 0.7;
@@ -62,7 +74,7 @@ const Logo = styled.img`
 
 
 export const Nav = () => {
-  const [open, setOpen] = useState(false)
+  // const [open, setOpen] = useState(false)
   const totalItems = useSelector((store) => (
     store.cart.items.reduce((total, item) => (total + (item.quantity)), 0)
   ))
@@ -71,14 +83,15 @@ export const Nav = () => {
     <>
       <Navbar>
         <Link to="/"><Logo src="../assets/hk240s.png" alt="logo"></Logo></Link>
-        <div>
-          <ToggleCart onClick={() => setOpen(!open)}>Cart({totalItems})</ToggleCart>
+        <Menu>
+          {/* <ToggleCart onClick={() => setOpen(!open)}>Cart({totalItems})</ToggleCart> */}
           <MenuItem to="/shop">Shop</MenuItem>
           <MenuItem to="/about">About</MenuItem>
           <MenuItem to="/login">Sign in</MenuItem>
-        </div>
+          <ToggleCart />
+        </Menu>
       </Navbar>
-      <Cart open={open} />
+      {/* <Cart open={open} /> */}
     </>
   )
 }

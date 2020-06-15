@@ -4,28 +4,34 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';
 
 
-const ProductImg = styled.img`
-  width: 100%;
+const CartProduct = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+`
 
-  &:hover {
-    opacity: 0.5;
-  }
+const ProductImg = styled.img`
+  width: 80%;
+`
+
+const ProductInfo = styled.div`
+  display: flex;
+  margin: 10px;
 `
 
 export const CartItem = ({ product }) => {
   const dispatch = useDispatch()
   return (
-    <div>
-      <div>
-        <ProductImg src={product.main_img} aria-label={product.title}></ProductImg>
-        <p>{product.title}</p>
-        <p>x{product.quantity}</p>
-        <p> = {product.price * product.quantity}:-</p>
-      </div>
-
-      <span className="actions">
+    <CartProduct>
+      <ProductImg src={product.main_img} aria-label={product.title}></ProductImg>
+      <ProductInfo>
+        <p>{product.title} </p>
+        <p>{product.price * product.quantity}:-</p>
+      </ProductInfo>
+      <span>
         <button type="button" onClick={() => dispatch(cart.actions.removeItem(product))}>-</button>
       </span>
-    </div>
+    </CartProduct>
   )
 }
