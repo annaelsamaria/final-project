@@ -5,15 +5,9 @@ const client = createClient({
   accessToken: "uiMzFbN0RG84H3k4pW1bq4psSZ22LLxxrnuJKT6IaCw"
 });
 
-const getproductById = contentType =>
-  client
-    .getEntry({
-      content_type: contentType
-    })
-    .then(entry => console.log(entry))
-    .catch(console.error)
-    .then(product => {
-      return product;
-    });
+const getProductById = id =>
+  client.getEntry(id).then(entry => {
+    return entry;
+  });
 
-export default getproductById;
+export default getProductById;

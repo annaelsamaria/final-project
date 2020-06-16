@@ -34,7 +34,7 @@ const ProductInfo = styled.div`
 export const ProductCard = ({ product }) => {
   return (
     <Product>
-      <Link to={`/shop/product/${product.fields.id}`} key={product.fields.title}>
+      <Link to={`/shop/product/${product.sys.id}`} key={product.fields.title}>
         <ProductImg
           src={product.fields.mainImage.fields.file.url}
           alt={product.fields.mainImage.fields.title}
