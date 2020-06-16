@@ -7,8 +7,10 @@ import getPageByContentType from "../helpers/getPagesByContentType";
 
 
 const ShopPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
-
 
 const InfoSection = styled.div`
   margin: 40px;
@@ -25,7 +27,6 @@ const ProductsContainer = styled.section`
   display: flex;
   align-items: center;
   flex-flow: wrap;
-  margin: 0 auto;
 `
 
 export const Shop = () => {
@@ -46,24 +47,26 @@ export const Shop = () => {
   //add filtered categories-function
 
   return (
-    <ShopPage>
+    <>
       <Nav />
-      <InfoSection>
-        <h2>shop</h2>
-        <p>HK 240 ceramics are designed in Kungsbacka, Sweden. All items are handmade and unique.</p>
-        <FilterItems>
-          <button>See all</button>
-          <button>Vases</button>
-          <button>Plates</button>
-          <button>Candle holders</button>
-          <button>Egg cups</button>
-        </FilterItems>
-      </InfoSection>
-      <ProductsContainer>
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </ProductsContainer>
-    </ShopPage>
+      <ShopPage>
+        <InfoSection>
+          <h2>shop</h2>
+          <p>HK 240 ceramics are designed in Kungsbacka, Sweden. All items are handmade and unique.</p>
+          <FilterItems>
+            <button>See all</button>
+            <button>Vases</button>
+            <button>Plates</button>
+            <button>Candle holders</button>
+            <button>Egg cups</button>
+          </FilterItems>
+        </InfoSection>
+        <ProductsContainer>
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </ProductsContainer>
+      </ShopPage>
+    </>
   )
 }

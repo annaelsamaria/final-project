@@ -5,6 +5,7 @@ import { HeartIcon } from '../lib/HeartIcon'
 
 
 const Product = styled.article`
+  flex-grow: 1;
   width: 300px;
   margin: 20px;
 

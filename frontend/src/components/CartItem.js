@@ -24,10 +24,11 @@ export const CartItem = ({ product }) => {
   const dispatch = useDispatch()
   return (
     <CartProduct>
-      <ProductImg src={product.main_img} aria-label={product.title}></ProductImg>
+      <ProductImg src={product.fields.mainImage.fields.file.url}
+        alt={product.fields.mainImage.fields.title} />
       <ProductInfo>
-        <p>{product.title} </p>
-        <p>{product.price * product.quantity}:-</p>
+        <p>{product.fields.name} </p>
+        <p>{product.fields.price}:-</p>
       </ProductInfo>
       <span>
         <button type="button" onClick={() => dispatch(cart.actions.removeItem(product))}>-</button>

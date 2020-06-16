@@ -54,7 +54,7 @@ const Checkout = styled.button`
 export const Cart = ({ open }) => {
   const products = useSelector((store) => store.cart.items)
   const totalPrice = useSelector((store) => (
-    store.cart.items.reduce((total, item) => (total + (item.price * item.quantity)), 0)
+    store.cart.items.reduce((total, item) => (total + (item.fields.price * item.quantity)), 0)
   ))
 
   return (
