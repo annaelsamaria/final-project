@@ -8,7 +8,9 @@ export const cart = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
-      const existingProduct = state.items.find((item) => item.id === action.payload.id)
+      const existingProduct = state.items.find((item) => item.sys.id === action.payload.sys.id)
+      console.log("add", state, action)
+
       if (existingProduct) {
         existingProduct.quantity += 0
       } else {
@@ -16,17 +18,17 @@ export const cart = createSlice({
       }
     },
     removeItem: (state, action) => {
-      const existingProduct = state.items.find((item) => item.id === action.payload.id)
+      const existingProduct = state.items.find((item) => item.sys.id === action.payload.sys.id)
 
       if (existingProduct && existingProduct.quantity === 1) {
-        state.items = state.items.filter((item) => item.id !== action.payload.id)
+        state.items = state.items.filter((item) => item.sys.id !== action.payload.sys.id)
       } else if (existingProduct) {
         existingProduct.quantity -= 1
       }
     },
     saveFavorite: (state, action) => {
-      const existingProduct = state.favoriteItems.find((item) => item.id === action.payload.id)
-
+      const existingProduct = state.favoriteItems.find((item) => item.sys.id === action.payload.sys.id)
+      console.log("favorite", state, action)
       if (existingProduct) {
         existingProduct.quantity += 0
       } else {

@@ -25,13 +25,13 @@ const reducer = combineReducers({
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const persistedStateJSON = localStorage.getItem('products');
-console.log(`persistedStateJSON: ${persistedStateJSON}`);
+// console.log(`persistedStateJSON: ${persistedStateJSON}`);
 let persistedState = {};
 
 if (persistedStateJSON) {
   persistedState = JSON.parse(persistedStateJSON);
 }
-console.log(`persistedState: ${JSON.stringify(persistedState)}`);
+// console.log(`persistedState: ${JSON.stringify(persistedState)}`);
 
 // 2. Create the store using the initial state
 

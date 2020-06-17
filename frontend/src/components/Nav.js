@@ -42,21 +42,6 @@ align-items: center;
 justify-content: space-between;
 `
 
-// const ToggleCart = styled.button`
-//   margin-left: 10px;
-//   text-decoration: none;
-//   border: none;
-//   color: black;
-//   background: none;
-//   font-size: 16px;
-//   padding: 0;
-
-// &:hover {
-//   cursor: pointer;
-//   opacity: 0.5;
-// }
-// `
-
 const Logo = styled.img`
   width: 100px;
   transition: opacity .25s ease-in-out;
@@ -74,24 +59,18 @@ const Logo = styled.img`
 
 
 export const Nav = () => {
-  // const [open, setOpen] = useState(false)
-  const totalItems = useSelector((store) => (
-    store.cart.items.reduce((total, item) => (total + (item.quantity)), 0)
-  ))
 
   return (
     <>
       <Navbar>
-        <Link to="/"><Logo src="../assets/hk240s.png" alt="logo"></Logo></Link>
+        <Link to="/"><Logo src="/assets/hk240s.png" alt="logo"></Logo></Link>
         <Menu>
-          {/* <ToggleCart onClick={() => setOpen(!open)}>Cart({totalItems})</ToggleCart> */}
           <MenuItem to="/shop">Shop</MenuItem>
           <MenuItem to="/about">About</MenuItem>
           <MenuItem to="/login">Sign in</MenuItem>
           <ToggleCart />
         </Menu>
       </Navbar>
-      {/* <Cart open={open} /> */}
     </>
   )
 }

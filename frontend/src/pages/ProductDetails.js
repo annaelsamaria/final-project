@@ -6,10 +6,11 @@ import { useDispatch } from 'react-redux';
 import { HeartIcon } from '../lib/HeartIcon'
 import { Nav } from '../components/Nav'
 import getProductById from "../helpers/getProductById";
+import { SecondTitle } from '../lib/Text'
 
 
 const ProductContainer = styled.article`
-  width: 1200px;
+  width: 80%;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -24,18 +25,18 @@ const ProductImg = styled.img`
   margin: 0 20px;
 
   @media (min-width: 667px) {
-    width: 600px;
+    width: 500px;
   }
 `
 
-
 const AddToCart = styled.button`
+  font-family: 'Roboto', sans-serif;
   margin: 20px;
   border: 1px solid black;
   height: 30px;
   font-size: 16px;
   background: transparent;
-  padding: 0 20px;
+  padding: 0 30px;
   transition: opacity .25s ease-in-out;
   -moz-transition: opacity .25s ease-in-out;
   -webkit-transition: opacity .25s ease-in-out;
@@ -55,7 +56,7 @@ const ProductInfo = styled.div`
 
 const SecondaryImg = styled.img`
   width: 300px;
-  margin: 0 20px;
+  margin: 0 5px;
 `
 
 const SecondaryImgContainer = styled.div`
@@ -68,6 +69,19 @@ const SecondaryImgContainer = styled.div`
   }
 `
 
+const ToShop = styled(Link)`
+  align-items: center;
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+
+  &:hover {
+    opacity: 0.5;
+  }
+`
 
 export const ProductDetails = () => {
   const { productId } = useParams()
@@ -87,7 +101,7 @@ export const ProductDetails = () => {
   if (loading) return <div>Laddar...</div>
 
   return (
-    <div>
+    <>
       <Nav />
       <ProductContainer>
         <ProductImg src={product.fields.mainImage.fields.file.url}
@@ -95,18 +109,18 @@ export const ProductDetails = () => {
 
         <ProductInfo>
           <div>
-            <h2>{product.fields.name}</h2>
+            <SecondTitle>{product.fields.name}</SecondTitle>
             <p>{product.fields.price}:-</p>
+          </div>
+          <HeartIcon product={product} />
+          <p>{product.fields.description}</p>
+          <p>{product ? "" : "You can only add the same product once"}</p>
+          <div>
             <AddToCart
               type="button"
               onClick={() => dispatch(cart.actions.addItem(product))}>ad to cart
-             </AddToCart>
-            <HeartIcon product={product} />
+          </AddToCart>
           </div>
-
-          <p>{product.fields.description}</p>
-          <p>{product ? "" : "You can only add the same product once"}</p>
-
           <SecondaryImgContainer>
             <SecondaryImg src={product.fields.secondImage.fields.file.url}
               alt={product.fields.secondImage.fields.title} />
@@ -117,10 +131,10 @@ export const ProductDetails = () => {
 
       </ProductContainer>
       <Route path="/shop">
-        <Link to="/shop">
+        <ToShop to="/shop">
           <p>All products</p>
-        </Link>
+        </ToShop>
       </Route>
-    </div>
+    </>
   )
 }

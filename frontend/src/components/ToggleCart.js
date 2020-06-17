@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 
 
 const Bag = styled.button`
+  font-family: 'Roboto', sans-serif;
   position: absolute;
   top: 20px;
   right: 30px;

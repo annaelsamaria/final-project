@@ -36,6 +36,7 @@ const CartProducts = styled.ul`
 `
 
 const Checkout = styled.button`
+  font-family: 'Roboto', sans-serif;
   border: 1px solid black;
   height: 30px;
   font-size: 16px;

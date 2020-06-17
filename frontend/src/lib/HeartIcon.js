@@ -19,18 +19,12 @@ const Heart = styled.svg`
 &:hover {
   fill: red;
 }
-
 `
 
 export const HeartIcon = ({ product }) => {
-  console.log(product)
+  // console.log(product)
   // const [saved, setSaved] = useState([]);
   const dispatch = useDispatch()
-
-  // const handleOnChange = (event) => {
-  //   onChangeHandler();
-  //   setSaved(event.target.checked);
-  // };
 
 
   return (

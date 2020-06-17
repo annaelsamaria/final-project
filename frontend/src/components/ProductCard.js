@@ -9,9 +9,9 @@ const Product = styled.article`
   width: 300px;
   margin: 20px;
 
-  @media (min-width: 667px) {
-    width: 400px;
-  }
+  // @media (min-width: 667px) {
+  //   width: 200px;
+  // }
 
 `
 const ProductImg = styled.img`
@@ -46,7 +46,7 @@ export const ProductCard = ({ product }) => {
           <p>{product.fields.name}</p>
           <p>{product.fields.price}:-</p>
         </div>
-        <HeartIcon />
+        <HeartIcon product={product} />
       </ProductInfo>
     </Product>
   )
