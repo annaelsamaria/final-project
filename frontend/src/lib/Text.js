@@ -25,7 +25,7 @@ export const SecondTitle = styled.h2`
 `
 
 export const Subtitle = styled.h3`
-  margin: 0;
+  text-align: center;
   font-size: 18px;
   line-height: 24px;
   color: black;

@@ -22,10 +22,8 @@ const Heart = styled.svg`
 `
 
 export const HeartIcon = ({ product }) => {
-  // console.log(product)
   // const [saved, setSaved] = useState([]);
   const dispatch = useDispatch()
-
 
   return (
     <div>

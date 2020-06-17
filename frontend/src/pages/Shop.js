@@ -3,8 +3,8 @@ import { ProductCard } from '../components/ProductCard'
 import styled from 'styled-components/macro';
 import { Nav } from '../components/Nav'
 import getPageByContentType from "../helpers/getPagesByContentType";
-import { SecondTitle } from '../lib/Text'
-
+import { Subtitle } from '../lib/Text'
+import { Spinner } from '../lib/LoadingSpinner'
 
 
 const ShopPage = styled.div`
@@ -57,8 +57,7 @@ export const Shop = () => {
     });
   }, []);
 
-  if (loading) return <div>Laddar...</div>
-
+  if (loading) return <Spinner />
 
 
   //add filtered categories-function
@@ -78,7 +77,6 @@ export const Shop = () => {
       setFilteredProducts(products.filter(product => product.fields.category === name))
       console.log("filter", filteredProducts)
       console.log("products", products)
-
     }
   }
 
@@ -87,7 +85,7 @@ export const Shop = () => {
       <Nav />
       <ShopPage>
         <InfoSection>
-          <SecondTitle>SHOP</SecondTitle>
+          <Subtitle>Shop</Subtitle>
           <p>HK 240 ceramics are designed in Kungsbacka, Sweden. All items are handmade and unique.</p>
           <FilterItems>
             {filterButtons.map(({ name, value }) => (

@@ -15,10 +15,12 @@ import { SignUp } from 'components/SignUp'
 import { SignIn } from 'components/SignIn';
 import { cart } from 'reducers/cart'
 import { user } from 'reducers/user'
+import { ui } from 'reducers/ui'
 
 
 const reducer = combineReducers({
   cart: cart.reducer,
+  ui: ui.reducer,
   user: user.reducer
 })
 
@@ -50,6 +52,7 @@ export const App = () => {
     <BrowserRouter>
       <Provider store={store}>
         <main>
+          <Cart />
           <Switch>
             <Route path="/" exact>
               <Home />
@@ -67,7 +70,6 @@ export const App = () => {
               <LogIn />
             </Route>
             <Route path="/checkout" exact>
-              <Cart />
             </Route>
             <Route path="/signup" exact>
               <SignUp />

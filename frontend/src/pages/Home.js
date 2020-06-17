@@ -36,12 +36,15 @@ const ToShop = styled(Link)`
   text-decoration: none;
   color: black;
   margin: 20px;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out;
+  transition: all .2s ease-in-out; 
+  // transition: opacity .25s ease-in-out;
+  // -moz-transition: opacity .25s ease-in-out;
+  // -webkit-transition: opacity .25s ease-in-out;
 
   &:hover {
-    opacity: 0.5;
+    transform: scale(1.1); 
+
+    // opacity: 0.5;
   }
 `
 

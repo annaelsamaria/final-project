@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Route, Link, useParams } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { cart } from '../reducers/cart'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { HeartIcon } from '../lib/HeartIcon'
 import { Nav } from '../components/Nav'
 import getProductById from "../helpers/getProductById";
 import { SecondTitle } from '../lib/Text'
+import { Button } from '../lib/Button'
+import { Spinner } from '../lib/LoadingSpinner'
 
 
 const ProductContainer = styled.article`
@@ -26,23 +28,6 @@ const ProductImg = styled.img`
 
   @media (min-width: 667px) {
     width: 500px;
-  }
-`
-
-const AddToCart = styled.button`
-  font-family: 'Roboto', sans-serif;
-  margin: 20px;
-  border: 1px solid black;
-  height: 30px;
-  font-size: 16px;
-  background: transparent;
-  padding: 0 30px;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out;
-
-  &:hover {
-    opacity: 0.5;
   }
 `
 
@@ -74,12 +59,10 @@ const ToShop = styled(Link)`
   font-size: 16px;
   text-decoration: none;
   color: black;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out;
+  transition: margin-right 0.2s cubic-bezier(0.42, 0, 0.21, 0.99);
 
   &:hover {
-    opacity: 0.5;
+    margin-right: 5px;
   }
 `
 
@@ -87,8 +70,12 @@ export const ProductDetails = () => {
   const { productId } = useParams()
   const dispatch = useDispatch()
 
-  let [product, setProduct] = useState(Object);
-  let [loading, setLoading] = useState(true);
+  const [product, setProduct] = useState(Object);
+  const [loading, setLoading] = useState(true);
+
+  //Jag vill veta om en exakt produkt redan ligger i kassan, isf rendera meddelande. 
+  const itemsAdded = useSelector((store) => (store.cart.items > 0))
+
 
   useEffect(() => {
     getProductById(productId).then(page => {
@@ -98,11 +85,16 @@ export const ProductDetails = () => {
     });
   }, [productId]);
 
-  if (loading) return <div>Laddar...</div>
+  if (loading) return <Spinner />
 
   return (
     <>
       <Nav />
+      <Route path="/shop">
+        <ToShop to="/shop">
+          <p>All products</p>
+        </ToShop>
+      </Route>
       <ProductContainer>
         <ProductImg src={product.fields.mainImage.fields.file.url}
           alt={product.fields.mainImage.fields.title} />
@@ -114,12 +106,12 @@ export const ProductDetails = () => {
           </div>
           <HeartIcon product={product} />
           <p>{product.fields.description}</p>
-          <p>{product ? "" : "You can only add the same product once"}</p>
+          <p>{itemsAdded ? "" : "You can only add the same product once"}</p>
           <div>
-            <AddToCart
+            <Button
               type="button"
               onClick={() => dispatch(cart.actions.addItem(product))}>ad to cart
-          </AddToCart>
+          </Button>
           </div>
           <SecondaryImgContainer>
             <SecondaryImg src={product.fields.secondImage.fields.file.url}
@@ -130,11 +122,6 @@ export const ProductDetails = () => {
         </ProductInfo>
 
       </ProductContainer>
-      <Route path="/shop">
-        <ToShop to="/shop">
-          <p>All products</p>
-        </ToShop>
-      </Route>
     </>
   )
 }

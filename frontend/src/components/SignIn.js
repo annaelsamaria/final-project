@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { user, login } from '../reducers/user';
 import { Profile } from '../pages/Profile';
 
-// const URL = 'http://localhost:8080/users';
-
 export const SignIn = () => {
   const dispatch = useDispatch();
   const accessToken = useSelector((store) => store.user.login.accessToken);

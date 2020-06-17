@@ -9,13 +9,15 @@ export const Profile = () => {
   const errorMessage = useSelector((store) => store.user.login.errorMessage);
   const loginMessage = useSelector((store) => store.user.login.loginMessage);
   const favoriteProducts = useSelector((store) => store.cart.favoriteItems)
-  console.log("hearts", favoriteProducts)
+
+  //Vart får jag uppgifter om kunden?
 
   return (
     <div>
       {errorMessage && <h4>Error Message : {`${errorMessage}`}</h4>}
       {loginMessage && <h4>Secret Message : {`${loginMessage}`}</h4>}
-      <p>Lots of secret stuff here</p>
+      <h2>Welcome ...name</h2>
+      <p>This is your page</p>
       <button type='submit' onClick={(e) => dispatch(logout())}>
         LOG OUT
       </button>

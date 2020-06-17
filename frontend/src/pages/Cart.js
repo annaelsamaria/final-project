@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro';
 import { CartItem } from '../components/CartItem'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { ui } from '../reducers/ui'
+import { Button } from '../lib/Button'
+import { Subtitle } from '../lib/Text'
 
 
 const RightCart = styled.div`
@@ -12,9 +15,8 @@ const RightCart = styled.div`
   right: 0;
   bottom: 0;
   width: 300px;
-  // height: ${document.height}
   overflow-y: scroll;
-  padding-top: 3.5rem;
+  padding-top: 20px;
   transition: transform 0.3s ease-in-out;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
@@ -26,50 +28,52 @@ const RightCart = styled.div`
 const CartContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin: 20px;
 `
+
+const CloseButton = styled(Button)`
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  padding: 0;
+`
+
 const CartProducts = styled.ul`
   padding: 0;
-
 `
 
-const Checkout = styled.button`
-  font-family: 'Roboto', sans-serif;
-  border: 1px solid black;
-  height: 30px;
-  font-size: 16px;
-  background: transparent;
-  padding: 0 20px;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out;
-
-  &:hover {
-    opacity: 0.5;
-  }
+const Line = styled.div`
+  border-bottom: 1px solid black;
+  width: 200px;
+  margin: 10px;
 `
 
-
-export const Cart = ({ open }) => {
+export const Cart = () => {
+  const dispatch = useDispatch()
   const products = useSelector((store) => store.cart.items)
+  const open = useSelector((store) => store.ui.openCart)
   const totalPrice = useSelector((store) => (
     store.cart.items.reduce((total, item) => (total + (item.fields.price * item.quantity)), 0)
   ))
+  const totalItems = useSelector((store) => (
+    store.cart.items.reduce((total, item) => (total + (item.quantity)), 0)))
 
   return (
     <RightCart open={open}>
       <CartContent>
-        <h3>My bag</h3>
+        <CloseButton onClick={() => dispatch(ui.actions.closeCart())}>X</CloseButton>
+        <Subtitle>My bag ({totalItems})</Subtitle>
+        <Line />
         <CartProducts>
           {products.map((product) => (
             <CartItem key={product.id} product={product} />
           ))}
         </CartProducts>
+        <Line />
         <div>
-          <div>Total: {totalPrice}:-</div>
-          <Checkout>Go to checkout</Checkout>
+          <Subtitle>Total: {totalPrice}:-</Subtitle>
+          <Button>Go to checkout</Button>
         </div>
       </CartContent>
     </RightCart>
