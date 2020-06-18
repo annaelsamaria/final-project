@@ -59,6 +59,7 @@ const MenuItem = styled(NavLink)`
     // transition: transform .25s ease-in-out;
   }
 `
+
 const Menu = styled.div`
   display: flex;
   align-items: center;

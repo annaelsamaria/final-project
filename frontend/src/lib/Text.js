@@ -14,13 +14,14 @@ export const Title = styled.h1`
 
 export const SecondTitle = styled.h2`
   text-align: center;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 18px;
+  line-height: 24px;
   color: black;
+  margin: 20px;
 
 @media (min-width: 1024px) {
   font-size: 30px;
-  line-height: 42px;
+  line-height: 36px;
 }
 `
 

@@ -5,24 +5,19 @@ import { HeartIcon } from '../lib/HeartIcon'
 
 
 const Product = styled.article`
-  flex-grow: 1;
+  // flex-grow: 1;
   width: 300px;
   margin: 20px;
-
-  // @media (min-width: 667px) {
-  //   width: 200px;
-  // }
-
 `
 const ProductImg = styled.img`
   width: 100%;
 
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out;
+  transition: all .25s ease-in-out; 
+  -moz-transition: all .25s ease-in-out;
+  -webkit-transition: all .25s ease-in-out;
 
   &:hover {
-    opacity: 0.5;
+    transform: scale(1.05); 
   }
 `
 
