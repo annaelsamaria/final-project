@@ -2,13 +2,14 @@ import React from 'react'
 import styled from 'styled-components/macro';
 import { CartItem } from '../components/CartItem'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { ui } from '../reducers/ui'
 import { Button } from '../lib/Button'
 import { Subtitle } from '../lib/Text'
 
 
 const RightCart = styled.div`
-  background-color: #FFF8EE;
+  background-color: #f9f3ea;
   position: fixed;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
   top: 0;
@@ -49,6 +50,29 @@ const Line = styled.div`
   margin: 10px;
 `
 
+const ToShop = styled(Link)`
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  height: 30px;
+  font-size: 16px;
+  background: transparent;
+  padding: 0 20px;
+  text-decoration: none;
+  color: black;
+  margin: 20px;
+  transition: all .2s ease-in-out; 
+  // transition: opacity .25s ease-in-out;
+  // -moz-transition: opacity .25s ease-in-out;
+  // -webkit-transition: opacity .25s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1); 
+
+    // opacity: 0.5;
+  }
+`
+
 export const Cart = () => {
   const dispatch = useDispatch()
   const products = useSelector((store) => store.cart.items)
@@ -73,7 +97,7 @@ export const Cart = () => {
         <Line />
         <div>
           <Subtitle>Total: {totalPrice}:-</Subtitle>
-          <Button>Go to checkout</Button>
+          <ToShop to="/checkout" onClick={() => dispatch(ui.actions.closeCart())}>To checkout</ToShop>
         </div>
       </CartContent>
     </RightCart>

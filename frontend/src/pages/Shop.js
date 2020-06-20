@@ -28,6 +28,7 @@ const FilterButtons = styled.button`
   font-family: 'Roboto', sans-serif;
   margin: 5px;
   border: none;
+  outline: none;
   height: 30px;
   font-size: 16px;
   background: #8CA4B3;

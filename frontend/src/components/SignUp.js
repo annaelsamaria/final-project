@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { user } from '../reducers/user';
 import styled from 'styled-components/macro';
 import { Button } from '../lib/Button'
-
+import { Profile } from '../pages/Profile';
 
 
 const URL = 'http://localhost:8080/users';
@@ -21,9 +21,6 @@ const SignUpForm = styled.form`
 export const SignUp = () => {
   const dispatch = useDispatch();
   const accessToken = useSelector((store) => store.user.login.accessToken);
-  const loggedoutMessage = useSelector(
-    (store) => store.user.login.loggedoutMessage
-  );
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState('');
@@ -134,10 +131,14 @@ export const SignUp = () => {
         )}
         {showSummary && <p>You are now signed up {firstName}</p>}
         {errorMessage && <h1>{errorMessage}</h1>}
-        {loggedoutMessage && <h4>you are now logged out!</h4>}
       </SignUpContainer>
     );
   } else {
-    return <p>You are signed up</p>;
+    return (
+      <>
+        <p>You are signed up</p>
+        <Profile />
+      </>
+    )
   }
 };

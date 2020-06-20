@@ -10,16 +10,20 @@ import { Shop } from 'pages/Shop'
 import { ProductDetails } from 'pages/ProductDetails'
 import { LogIn } from 'pages/LogIn'
 import { Cart } from 'pages/Cart'
+import { Checkout } from 'pages/Checkout'
 import { Footer } from 'components/Footer'
 import { SignUp } from 'components/SignUp'
 import { SignIn } from 'components/SignIn';
 import { cart } from 'reducers/cart'
 import { user } from 'reducers/user'
 import { ui } from 'reducers/ui'
+import { favorite } from 'reducers/favorite'
+
 
 
 const reducer = combineReducers({
   cart: cart.reducer,
+  favorite: favorite.reducer,
   ui: ui.reducer,
   user: user.reducer
 })
@@ -70,6 +74,7 @@ export const App = () => {
               <LogIn />
             </Route>
             <Route path="/checkout" exact>
+              <Checkout />
             </Route>
             <Route path="/signup" exact>
               <SignUp />

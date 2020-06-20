@@ -25,6 +25,10 @@ const ToggleButtons = styled.button`
   &:hover {
     border-bottom: 1px solid black;
   }
+
+  &.after {
+    border-bottom: 1px solid black;
+  }
 `
 
 export const LogIn = () => {

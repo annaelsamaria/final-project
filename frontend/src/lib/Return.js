@@ -3,10 +3,16 @@ import styled from 'styled-components/macro';
 
 
 const Arrow = styled.svg`
-&:active {
-  margin-right: 5px;
-  transition: margin-right 0.2s cubic-bezier(0.42, 0, 0.21, 0.99);
-}
+  margin: 5px 0;
+  
+  &:hover {
+    margin-left: 5px;
+    transition: margin-left 0.2s cubic-bezier(0.42, 0, 0.21, 0.99);
+  }
+  &:active {
+    margin-left: 5px;
+    transition: margin-left 0.2s cubic-bezier(0.42, 0, 0.21, 0.99);
+  }
 
 `
 

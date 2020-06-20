@@ -10,6 +10,7 @@ const SignInForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 180px;
 `
 
 export const SignIn = () => {
@@ -55,6 +56,7 @@ export const SignIn = () => {
           </SignInForm>
         )}
         {errorMessage && <h1>{errorMessage}</h1>}
+        {loggedoutMessage && <h4>You are now logged out!</h4>}
       </div>
     );
   } else {

@@ -48,15 +48,8 @@ const MenuItem = styled(NavLink)`
   color: black;
   transition: all .2s ease-in-out; 
 
-  // transition: opacity .25s ease-in-out;
-  // -moz-transition: opacity .25s ease-in-out;
-  // -webkit-transition: opacity .25s ease-in-out;
-
   &:hover {
-    // opacity: 0.5;
-    transform: scale(1.0); 
-    border-bottom: solid 1px black;
-    // transition: transform .25s ease-in-out;
+    border-bottom: 1px solid black;
   }
 `
 
@@ -77,7 +70,6 @@ const BagButton = styled.button`
 
   &:hover {
     cursor: pointer;
-    opacity: 0.5;
   }
 `
 

@@ -26,6 +26,7 @@ const ProductContainer = styled.article`
 const ProductImg = styled.img`
   width: 300px;
   margin-right: 20px;
+  display: block;
 
   @media (min-width: 667px) {
     width: 500px;
@@ -40,11 +41,6 @@ const ProductInfo = styled.div`
   justify-content: space-between;
 `
 
-const SecondaryImg = styled.img`
-  width: 300px;
-  margin: 0 5px;
-`
-
 const SecondaryImgContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -55,11 +51,13 @@ const SecondaryImgContainer = styled.div`
   }
 `
 
+const SecondaryImg = styled.img`
+  width: 300px;
+  margin: 0 5px;
+`
+
+
 const ToShop = styled(Link)`
-  align-items: center;
-  font-size: 16px;
-  text-decoration: none;
-  color: black;
   transition: margin-right 0.2s cubic-bezier(0.42, 0, 0.21, 0.99);
 
   &:hover {
@@ -75,7 +73,7 @@ export const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
 
   //Jag vill veta om en exakt produkt redan ligger i kassan, isf rendera meddelande. 
-  const itemsAdded = useSelector((store) => (store.cart.items > 0))
+  // const itemsAdded = useSelector((store) => (store.cart.items > 0))
 
 
   useEffect(() => {
@@ -109,7 +107,7 @@ export const ProductDetails = () => {
           </div>
           <HeartIcon product={product} />
           <p>{product.fields.description}</p>
-          <p>{itemsAdded ? "" : "You can only add the same product once"}</p>
+          {/* <p>{itemsAdded ? "" : "You can only add the same product once"}</p> */}
           <div>
             <Button
               type="button"

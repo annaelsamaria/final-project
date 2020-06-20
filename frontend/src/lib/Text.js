@@ -17,7 +17,7 @@ export const SecondTitle = styled.h2`
   font-size: 18px;
   line-height: 24px;
   color: black;
-  margin: 20px;
+  margin: 20px 0 3px 0;
 
 @media (min-width: 1024px) {
   font-size: 30px;
