@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { user, login } from '../reducers/user';
+import { login } from '../reducers/user';
 import { Profile } from '../pages/Profile';
+import styled from 'styled-components/macro';
+import { Button } from '../lib/Button'
+
+
+const SignInForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 export const SignIn = () => {
   const dispatch = useDispatch();
@@ -23,9 +32,9 @@ export const SignIn = () => {
     return (
       <div>
         {!showSummary && (
-          <form onSubmit={handleLogin}>
+          <SignInForm onSubmit={handleLogin}>
             <label>
-              email
+              <p>E-mail</p>
               <input
                 type='email'
                 value={email}
@@ -34,7 +43,7 @@ export const SignIn = () => {
               />
             </label>
             <label>
-              password
+              <p>Password</p>
               <input
                 type='password'
                 value={password}
@@ -42,8 +51,8 @@ export const SignIn = () => {
                 onChange={(event) => setPassword(event.target.value)}
               />
             </label>
-            <button type='submit'>LOG IN</button>
-          </form>
+            <Button type='submit'>Log in</Button>
+          </SignInForm>
         )}
         {errorMessage && <h1>{errorMessage}</h1>}
       </div>

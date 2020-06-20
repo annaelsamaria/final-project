@@ -42,7 +42,6 @@ const FilterButtons = styled.button`
 const ProductsContainer = styled.section`
   width: 80%;
   display: flex;
-  // align-items: center;
   justify-content: center;
   flex-flow: wrap;
 `

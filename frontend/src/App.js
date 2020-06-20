@@ -11,8 +11,6 @@ import { ProductDetails } from 'pages/ProductDetails'
 import { LogIn } from 'pages/LogIn'
 import { Cart } from 'pages/Cart'
 import { Footer } from 'components/Footer'
-import { SignUp } from 'components/SignUp'
-import { SignIn } from 'components/SignIn';
 import { cart } from 'reducers/cart'
 import { user } from 'reducers/user'
 import { ui } from 'reducers/ui'
@@ -70,12 +68,6 @@ export const App = () => {
               <LogIn />
             </Route>
             <Route path="/checkout" exact>
-            </Route>
-            <Route path="/signup" exact>
-              <SignUp />
-            </Route>
-            <Route path="/signin" exact>
-              <SignIn />
             </Route>
           </Switch>
           <Footer />

@@ -9,6 +9,7 @@ import getProductById from "../helpers/getProductById";
 import { SecondTitle } from '../lib/Text'
 import { Button } from '../lib/Button'
 import { Spinner } from '../lib/LoadingSpinner'
+import { ReturnArrow } from '../lib/Return'
 
 
 const ProductContainer = styled.article`
@@ -24,7 +25,7 @@ const ProductContainer = styled.article`
 `
 const ProductImg = styled.img`
   width: 300px;
-  margin: 0 20px;
+  margin-right: 20px;
 
   @media (min-width: 667px) {
     width: 500px;
@@ -90,15 +91,17 @@ export const ProductDetails = () => {
   return (
     <>
       <Nav />
-      <Route path="/shop">
-        <ToShop to="/shop">
-          <p>All products</p>
-        </ToShop>
-      </Route>
-      <ProductContainer>
-        <ProductImg src={product.fields.mainImage.fields.file.url}
-          alt={product.fields.mainImage.fields.title} />
 
+      <ProductContainer>
+        <div>
+          <Route path="/shop">
+            <ToShop to="/shop">
+              <ReturnArrow />
+            </ToShop>
+          </Route>
+          <ProductImg src={product.fields.mainImage.fields.file.url}
+            alt={product.fields.mainImage.fields.title} />
+        </div>
         <ProductInfo>
           <div>
             <SecondTitle>{product.fields.name}</SecondTitle>

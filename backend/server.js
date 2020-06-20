@@ -1,12 +1,11 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import productData from './data/ceramics.json'
 import mongoose from 'mongoose';
 import crypto from 'crypto';
 import bcrypt from 'bcrypt-nodejs';
 
-const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/authAPI';
+const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/hk240API';
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 mongoose.set('useCreateIndex', true);
@@ -62,50 +61,15 @@ const authenticateUser = async (req, res, next) => {
   }
 };
 
-//   PORT=9000 npm start
 const port = process.env.PORT || 8080;
 const app = express();
 
-// Add middlewares to enable cors and json body parsing
 app.use(cors());
 app.use(bodyParser.json());
 
-// Start defining your routes here
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
-
-// With "Query Parameter
-// localhost:8080/products?category=vases
-app.get('/products', (req, res) => {
-  const { category } = req.query
-
-  if (category) {
-    let getCategory = productData.filter((item) =>
-      item.category.toString().toLowerCase().includes(category)
-    )
-    if (getCategory.length > 0) {
-      res.json(getCategory)
-    } else {
-      res.status(404).json({ message: 'No products found' })
-    }
-  }
-  res.json(productData)
-})
-
-// single product
-app.get('/products/:id', (req, res) => {
-  const { id } = req.params
-  const productsId = productData.filter((item) => item.id === +id)
-
-  if (productsId.length > 0) {
-    res.json(productsId)
-  }
-  else {
-    res.status(404).send({ message: 'No product found' })
-  }
-})
-
 
 // SIGN UP
 app.post('/users', async (req, res) => {
@@ -128,7 +92,7 @@ app.post('/users', async (req, res) => {
 // SECURE ENDPOINT, CHECK IF USER IS AUTHORIZED
 app.get('/users/:id', authenticateUser);
 app.get('/users/:id', (req, res) => {
-  const loginMessage = `This is a super secret message for  ${req.user.name}`;
+  const loginMessage = `Welcome ${req.user.firstName}`;
   res.status(201).json({ loginMessage });
 });
 
@@ -148,16 +112,16 @@ app.post('/sessions', async (req, res) => {
 });
 
 
-//post endpoints savedProducts
-app.post('/users/:id/saved', async (req, res) => {
+// post endpoints savedProductsapp.post('/products/:id/save', authenticateUser);
+app.post('/products/:id/save', async (req, res) => {
+  const id = req.params.id;
   try {
-    const favorite = await Thought.findOneAndUpdate({ savedProducts: req.params.id })
+    const favorite = await User.findOneAndUpdate({ _id: req.user._id }, { $push: { savedProducts: id } })
     res.json(favorite)
   } catch (err) {
     res.status(400).json({ message: 'Could not save product', error: err.errors })
   }
 })
-
 
 // Start the server
 app.listen(port, () => {

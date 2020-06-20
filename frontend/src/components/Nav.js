@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro';
 import { Link, NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
@@ -73,6 +73,7 @@ const BagButton = styled.button`
   border: none;
   margin-left: 10px;
   padding: 0;
+  outline: none;
 
   &:hover {
     cursor: pointer;

@@ -16,7 +16,7 @@ const Heart = styled.svg`
   -moz-transition: opacity .25s ease-in-out;
   -webkit-transition: opacity .25s ease-in-out;
 
-&:hover {
+&:active {
   fill: red;
 }
 `

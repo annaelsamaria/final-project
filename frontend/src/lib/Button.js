@@ -8,6 +8,7 @@ export const Button = styled.button`
   font-size: 16px;
   background: transparent;
   padding: 0 30px;
+  outline: none;
   transition: all .25s ease-in-out; 
 
   &:hover {

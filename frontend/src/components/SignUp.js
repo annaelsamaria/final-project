@@ -1,8 +1,22 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { user, login } from '../reducers/user';
+import { user } from '../reducers/user';
+import styled from 'styled-components/macro';
+import { Button } from '../lib/Button'
+
+
 
 const URL = 'http://localhost:8080/users';
+
+const SignUpContainer = styled.div`
+
+`
+
+const SignUpForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 export const SignUp = () => {
   const dispatch = useDispatch();
@@ -47,7 +61,7 @@ export const SignUp = () => {
         })
 
         .catch((err) => {
-          setErrorMessage('error:Username/email is already registered.', err);
+          setErrorMessage('You are already registered.', err);
           dispatch(user.actions.setErrorMessage({ errorMessage: err }));
         });
     };
@@ -55,11 +69,11 @@ export const SignUp = () => {
 
   if (!accessToken) {
     return (
-      <div>
+      <SignUpContainer>
         {!showSummary && (
-          <form onSubmit={(e) => dispatch(handleSignup(e))}>
+          <SignUpForm onSubmit={(e) => dispatch(handleSignup(e))}>
             <label>
-              First name
+              <p>First name</p>
               <input
                 value={firstName}
                 onChange={(event) => setFirstName(event.target.value)}
@@ -67,7 +81,7 @@ export const SignUp = () => {
               />
             </label>
             <label>
-              Last name
+              <p>Last name</p>
               <input
                 value={lastName}
                 onChange={(event) => setLastName(event.target.value)}
@@ -75,14 +89,14 @@ export const SignUp = () => {
               />
             </label>
             <label>
-              Address
+              <p>Address</p>
               <input
                 value={address}
                 onChange={(event) => setAddress(event.target.value)}
                 required
               />
             </label><label>
-              Postal code
+              <p>Postal code</p>
               <input
                 value={postalCode}
                 onChange={(event) => setPostalCode(event.target.value)}
@@ -90,7 +104,7 @@ export const SignUp = () => {
               />
             </label>
             <label>
-              City
+              <p>City</p>
               <input
                 value={city}
                 onChange={(event) => setCity(event.target.value)}
@@ -98,7 +112,7 @@ export const SignUp = () => {
               />
             </label>
             <label>
-              email
+              <p>E-mail</p>
               <input
                 type='email'
                 value={email}
@@ -107,7 +121,7 @@ export const SignUp = () => {
               />
             </label>
             <label>
-              password
+              <p>Password</p>
               <input
                 type='password'
                 value={password}
@@ -115,13 +129,13 @@ export const SignUp = () => {
                 onChange={(event) => setPassword(event.target.value)}
               />
             </label>
-            <button type='submit'>SIGN UP</button>
-          </form>
+            <Button type='submit'>Sign up</Button>
+          </SignUpForm>
         )}
         {showSummary && <p>You are now signed up {firstName}</p>}
         {errorMessage && <h1>{errorMessage}</h1>}
         {loggedoutMessage && <h4>you are now logged out!</h4>}
-      </div>
+      </SignUpContainer>
     );
   } else {
     return <p>You are signed up</p>;

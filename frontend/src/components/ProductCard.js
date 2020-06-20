@@ -5,13 +5,12 @@ import { HeartIcon } from '../lib/HeartIcon'
 
 
 const Product = styled.article`
-  // flex-grow: 1;
   width: 300px;
   margin: 20px;
 `
+
 const ProductImg = styled.img`
   width: 100%;
-
   transition: all .25s ease-in-out; 
   -moz-transition: all .25s ease-in-out;
   -webkit-transition: all .25s ease-in-out;

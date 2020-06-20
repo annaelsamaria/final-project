@@ -5,7 +5,28 @@ import styled from 'styled-components/macro';
 import { SignUp } from '../components/SignUp'
 import { SignIn } from 'components/SignIn';
 
-//Toggla mellan sign in och sign up
+const LoginSection = styled.section`
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+`
+
+const ToggleButtons = styled.button`
+  font-family: 'Roboto', sans-serif;
+  margin: 10px;
+  border: none;
+  height: 30px;
+  font-size: 24px;
+  background: transparent;
+  outline: none;
+  transition: all .25s ease-in-out; 
+
+  &:hover {
+    border-bottom: 1px solid black;
+  }
+`
 
 export const LogIn = () => {
   const [showLogin, setShowLogin] = useState(true)
@@ -20,24 +41,26 @@ export const LogIn = () => {
   return (
     <section>
       <Nav />
-      {!accessToken ?
-        <>
-          <button
-            type="button"
-            onClick={handleSignIn}>
-            Sign in
-        </button>
-          <button
-            type="button"
-            onClick={handleSignUp}>
-            Create user
-         </button>
-        </>
-        : ""
-      }
-      {showLogin === true ?
-        <SignIn /> : <SignUp />
-      }
+      <LoginSection>
+        {!accessToken ?
+          <div>
+            <ToggleButtons
+              type="button"
+              onClick={handleSignIn}>
+              Sign in
+        </ToggleButtons>
+            <ToggleButtons
+              type="button"
+              onClick={handleSignUp}>
+              Create user
+         </ToggleButtons>
+          </div>
+          : ""
+        }
+        {showLogin === true ?
+          <SignIn /> : <SignUp />
+        }
+      </LoginSection>
     </section>
   )
 }
