@@ -10,7 +10,6 @@ const LoginSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 500px;
 `
 
 const ToggleButtons = styled.button`

@@ -6,12 +6,10 @@ import styled from 'styled-components/macro';
 
 
 const ProductsContainer = styled.section`
-  width: 80%;
   display: flex;
   justify-content: center;
   flex-flow: wrap;
 `
-
 
 export const Profile = () => {
   const dispatch = useDispatch();
@@ -29,7 +27,6 @@ export const Profile = () => {
       </button>
       <h2>Your saved items: </h2>
       <ProductsContainer>
-
         {favoriteProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
