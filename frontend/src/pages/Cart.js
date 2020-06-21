@@ -91,13 +91,13 @@ export const Cart = () => {
         <Line />
         <CartProducts>
           {products.map((product) => (
-            <CartItem key={product.id} product={product} />
+            <CartItem key={product.sys.id} product={product} />
           ))}
         </CartProducts>
         <Line />
         <div>
           <Subtitle>Total: {totalPrice}:-</Subtitle>
-          <ToShop to="/checkout" onClick={() => dispatch(ui.actions.closeCart())}>To checkout</ToShop>
+          <ToShop to="/checkout" onClick={() => dispatch(ui.actions.closeCart())}>Checkout</ToShop>
         </div>
       </CartContent>
     </RightCart>

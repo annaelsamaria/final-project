@@ -10,19 +10,36 @@ import { SecondTitle } from '../lib/Text'
 import { Button } from '../lib/Button'
 import { Spinner } from '../lib/LoadingSpinner'
 import { ReturnArrow } from '../lib/Return'
+import { ScrollTopButton } from '../lib/Button'
 
 
-const ProductContainer = styled.article`
-  width: 80%;
-  margin: 20px;
+const ProductPage = styled.section`
   display: flex;
   flex-direction: column;
-  margin: 40px auto;
+  align-items: center;
+  justify-content: center;
 
-  @media (min-width: 667px) {
+`
+
+const ProductContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0;
+
+  @media (min-width: 1024px) {
     flex-direction: row; 
+    align-items: normal;
   }
 `
+
+const ToShop = styled(Link)`
+  transition: margin-right 0.2s cubic-bezier(0.42, 0, 0.21, 0.99);
+
+  &:hover {
+    margin-right: 5px;
+  }
+`
+
 const ProductImg = styled.img`
   width: 300px;
   margin-right: 20px;
@@ -57,14 +74,6 @@ const SecondaryImg = styled.img`
 `
 
 
-const ToShop = styled(Link)`
-  transition: margin-right 0.2s cubic-bezier(0.42, 0, 0.21, 0.99);
-
-  &:hover {
-    margin-right: 5px;
-  }
-`
-
 export const ProductDetails = () => {
   const { productId } = useParams()
   const dispatch = useDispatch()
@@ -89,40 +98,41 @@ export const ProductDetails = () => {
   return (
     <>
       <Nav />
-
-      <ProductContainer>
-        <div>
-          <Route path="/shop">
-            <ToShop to="/shop">
-              <ReturnArrow />
-            </ToShop>
-          </Route>
-          <ProductImg src={product.fields.mainImage.fields.file.url}
-            alt={product.fields.mainImage.fields.title} />
-        </div>
-        <ProductInfo>
+      <ProductPage>
+        <ProductContainer>
           <div>
-            <SecondTitle>{product.fields.name}</SecondTitle>
-            <p>{product.fields.price}:-</p>
+            <Route path="/shop">
+              <ToShop to="/shop">
+                <ReturnArrow />
+              </ToShop>
+            </Route>
+            <ProductImg src={product.fields.mainImage.fields.file.url}
+              alt={product.fields.mainImage.fields.title} />
           </div>
-          <HeartIcon product={product} />
-          <p>{product.fields.description}</p>
-          {/* <p>{itemsAdded ? "" : "You can only add the same product once"}</p> */}
-          <div>
-            <Button
-              type="button"
-              onClick={() => dispatch(cart.actions.addItem(product))}>ad to cart
+          <ProductInfo>
+            <div>
+              <SecondTitle>{product.fields.name}</SecondTitle>
+              <p>{product.fields.price}:-</p>
+            </div>
+            <HeartIcon product={product} />
+            <p>{product.fields.description}</p>
+            {/* <p>{itemsAdded ? "" : "You can only add the same product once"}</p> */}
+            <div>
+              <Button
+                type="button"
+                onClick={() => dispatch(cart.actions.addItem(product))}>ad to cart
           </Button>
-          </div>
-          <SecondaryImgContainer>
-            <SecondaryImg src={product.fields.secondImage.fields.file.url}
-              alt={product.fields.secondImage.fields.title} />
-            <SecondaryImg src={product.fields.thirdImage.fields.file.url}
-              alt={product.fields.thirdImage.fields.title} />
-          </SecondaryImgContainer>
-        </ProductInfo>
-
-      </ProductContainer>
+            </div>
+            <SecondaryImgContainer>
+              <SecondaryImg src={product.fields.secondImage.fields.file.url}
+                alt={product.fields.secondImage.fields.title} />
+              <SecondaryImg src={product.fields.thirdImage.fields.file.url}
+                alt={product.fields.thirdImage.fields.title} />
+            </SecondaryImgContainer>
+          </ProductInfo>
+        </ProductContainer>
+        <ScrollTopButton />
+      </ProductPage>
     </>
   )
 }

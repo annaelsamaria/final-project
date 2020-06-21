@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components/macro';
 
 const Contact = styled.footer`
-  height: 200px; 
+  padding: 50px;
   background: #f9f3ea;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+  text-align: center;
 `
 
 export const Footer = () => {

@@ -13,6 +13,10 @@ const SignInForm = styled.form`
   margin-bottom: 180px;
 `
 
+const SignInLabel = styled.label`
+  margin-bottom: 5px;
+`
+
 export const SignIn = () => {
   const dispatch = useDispatch();
   const accessToken = useSelector((store) => store.user.login.accessToken);
@@ -34,7 +38,7 @@ export const SignIn = () => {
       <div>
         {!showSummary && (
           <SignInForm onSubmit={handleLogin}>
-            <label>
+            <SignInLabel>
               <p>E-mail</p>
               <input
                 type='email'
@@ -42,8 +46,8 @@ export const SignIn = () => {
                 onChange={(event) => setEmail(event.target.value)}
                 required
               />
-            </label>
-            <label>
+            </SignInLabel>
+            <SignInLabel>
               <p>Password</p>
               <input
                 type='password'
@@ -51,12 +55,12 @@ export const SignIn = () => {
                 required
                 onChange={(event) => setPassword(event.target.value)}
               />
-            </label>
+            </SignInLabel>
             <Button type='submit'>Log in</Button>
           </SignInForm>
         )}
         {errorMessage && <h1>{errorMessage}</h1>}
-        {loggedoutMessage && <h4>You are now logged out!</h4>}
+        {loggedoutMessage && <h4>You are logged out!</h4>}
       </div>
     );
   } else {

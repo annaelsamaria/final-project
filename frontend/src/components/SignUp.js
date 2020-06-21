@@ -6,7 +6,6 @@ import { Button } from '../lib/Button'
 import { Profile } from '../pages/Profile';
 
 
-const URL = 'http://localhost:8080/users';
 
 const SignUpContainer = styled.div`
 
@@ -17,6 +16,12 @@ const SignUpForm = styled.form`
   flex-direction: column;
   align-items: center;
 `
+
+const SignUpLabel = styled.label`
+  margin-bottom: 5px;
+`
+
+const URL = 'http://localhost:8080/users';
 
 export const SignUp = () => {
   const dispatch = useDispatch();
@@ -69,46 +74,46 @@ export const SignUp = () => {
       <SignUpContainer>
         {!showSummary && (
           <SignUpForm onSubmit={(e) => dispatch(handleSignup(e))}>
-            <label>
+            <SignUpLabel>
               <p>First name</p>
               <input
                 value={firstName}
                 onChange={(event) => setFirstName(event.target.value)}
                 required
               />
-            </label>
-            <label>
+            </SignUpLabel>
+            <SignUpLabel>
               <p>Last name</p>
               <input
                 value={lastName}
                 onChange={(event) => setLastName(event.target.value)}
                 required
               />
-            </label>
-            <label>
+            </SignUpLabel>
+            <SignUpLabel>
               <p>Address</p>
               <input
                 value={address}
                 onChange={(event) => setAddress(event.target.value)}
                 required
               />
-            </label><label>
+            </SignUpLabel><SignUpLabel>
               <p>Postal code</p>
               <input
                 value={postalCode}
                 onChange={(event) => setPostalCode(event.target.value)}
                 required
               />
-            </label>
-            <label>
+            </SignUpLabel>
+            <SignUpLabel>
               <p>City</p>
               <input
                 value={city}
                 onChange={(event) => setCity(event.target.value)}
                 required
               />
-            </label>
-            <label>
+            </SignUpLabel>
+            <SignUpLabel>
               <p>E-mail</p>
               <input
                 type='email'
@@ -116,8 +121,8 @@ export const SignUp = () => {
                 onChange={(event) => setEmail(event.target.value)}
                 required
               />
-            </label>
-            <label>
+            </SignUpLabel>
+            <SignUpLabel>
               <p>Password</p>
               <input
                 type='password'
@@ -125,7 +130,7 @@ export const SignUp = () => {
                 required
                 onChange={(event) => setPassword(event.target.value)}
               />
-            </label>
+            </SignUpLabel>
             <Button type='submit'>Sign up</Button>
           </SignUpForm>
         )}

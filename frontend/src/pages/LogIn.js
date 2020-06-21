@@ -16,7 +16,6 @@ const ToggleButtons = styled.button`
   font-family: 'Roboto', sans-serif;
   margin: 10px;
   border: none;
-  height: 30px;
   font-size: 24px;
   background: transparent;
   outline: none;

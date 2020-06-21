@@ -5,13 +5,16 @@ import { Nav } from '../components/Nav'
 import getPageByContentType from "../helpers/getPagesByContentType";
 import { SecondTitle } from '../lib/Text'
 import { Spinner } from '../lib/LoadingSpinner'
+import { ScrollTopButton } from '../lib/Button'
 
 
-const ShopPage = styled.div`
+
+const ShopPage = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
 `
+
 const InfoSection = styled.div`
   margin-top: 40px;
   text-align: center;
@@ -40,7 +43,7 @@ const FilterButtons = styled.button`
   }
   `
 
-const ProductsContainer = styled.section`
+const ProductsContainer = styled.div`
   width: 80%;
   display: flex;
   justify-content: center;
@@ -95,9 +98,10 @@ export const Shop = () => {
         </InfoSection>
         <ProductsContainer>
           {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.sys.id} product={product} />
           ))}
         </ProductsContainer>
+        <ScrollTopButton />
       </ShopPage>
     </>
   )
