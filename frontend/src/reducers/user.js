@@ -83,7 +83,7 @@ export const getLoginMessage = () => {
       })
       .then((json) => {
         dispatch(
-          user.actions.setLoginMessage({ loginMessage: json.stringify(json) })
+          user.actions.setLoginMessage({ loginMessage: JSON.stringify(json) })
         )
       })
       .catch((err) => {

@@ -41,7 +41,6 @@ export const HeartIcon = ({ product }) => {
   const dispatch = useDispatch()
   const favoriteProducts = useSelector((store) => store.favorite.favoriteItems)
 
-  const findOne = favoriteProducts.map((item) => item.sys.id)
 
   const toggleFavorite = () => {
     dispatch(favorite.actions.saveFavorite(product))
