@@ -4,6 +4,7 @@ const initialState = {
   login: {
     accessToken: null,
     userId: 0,
+    firstName: '',
     errorMessage: null,
     loginMessage: null,
     loggedoutMessage: null,
@@ -21,6 +22,10 @@ export const user = createSlice({
     setUserId: (state, action) => {
       const { userId } = action.payload
       state.login.userId = userId
+    },
+    setFirstName: (state, action) => {
+      const { firstName } = action.payload
+      state.login.firstName = firstName
     },
     setErrorMessage: (state, action) => {
       const { errorMessage } = action.payload
@@ -58,6 +63,7 @@ export const login = (email, password) => {
           })
         )
         dispatch(user.actions.setUserId({ userId: json.userId }))
+        dispatch(user.actions.setFirstName({ firstName: JSON.firstName }))
       })
       .catch((err) => {
         dispatch(user.actions.logout());

@@ -1,5 +1,5 @@
 import React from 'react'
-import { logout, getLoginMessage } from '../reducers/user'
+import { user, logout, getLoginMessage } from '../reducers/user'
 import { useDispatch, useSelector } from 'react-redux'
 import { ProductCard } from '../components/ProductCard'
 import { Button } from '../lib/Button'
@@ -23,7 +23,8 @@ export const Profile = () => {
   const errorMessage = useSelector((store) => store.user.login.errorMessage)
   const loginMessage = useSelector((store) => store.user.login.loginMessage)
   const favoriteProducts = useSelector((store) => store.favorite.favoriteItems)
-  const firstName = useSelector((store) => store.favorite.firstName)
+  const firstName = useSelector((store) => store.user.login.firstName)
+
 
   return (
     <ProfilePage>
