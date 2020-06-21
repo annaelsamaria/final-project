@@ -22,9 +22,11 @@ const ProductPage = styled.section`
 `
 
 const ProductContainer = styled.div`
+  width: 80%;
   display: flex;
   flex-direction: column;
-  margin: 40px 0;
+  align-items: center;
+  margin: 40px auto;
 
   @media (min-width: 1024px) {
     flex-direction: row; 
@@ -70,7 +72,7 @@ const SecondaryImgContainer = styled.div`
 
 const SecondaryImg = styled.img`
   width: 300px;
-  margin: 0 5px;
+  margin: 5px 5px 0 0;
 `
 
 
