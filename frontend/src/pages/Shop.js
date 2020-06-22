@@ -87,7 +87,7 @@ export const Shop = () => {
       <ShopPage>
         <InfoSection>
           <SecondTitle>Shop</SecondTitle>
-          {/* <p>HK 240 ceramics are designed in Kungsbacka, Sweden. All items are handmade and unique.</p> */}
+          <p>Inspired by the swedish west coastAll items are handmade and unique.</p>
           <FilterItems>
             {filterButtons.map(({ name, value }) => (
               <FilterButtons key={name} onClick={() => filterOnClick(value)}>

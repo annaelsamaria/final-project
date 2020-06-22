@@ -9,10 +9,14 @@ const HomePage = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // background-image: url(/assets/mediaio_hkmovie.gif);
+  background-image: url(/assets/mediaio_hkmovie.gif);
   height: 100vh;
   background-size: cover;
   background-position: center; 
+
+  @media (min-width: 667px) {
+    background-image: none;
+  }
 `
 
 const Logo = styled.img`
@@ -30,8 +34,8 @@ const Logo = styled.img`
 `
 
 const ToShop = styled(Link)`
-position: relative;
-display: flex;
+  position: relative;
+  display: flex;
   align-items: center;
   border: 1px solid black;
   height: 30px;
@@ -54,6 +58,11 @@ export const Video = styled.video`
   object-fit: cover;
   width: 100%;
   height: 100%;
+  display: none;
+
+  @media (min-width: 667px) {
+    display: block;
+  }
 `
 
 
