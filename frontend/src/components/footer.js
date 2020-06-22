@@ -1,5 +1,8 @@
 import React from 'react'
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
+import { Mail } from '../lib/ContactIcons'
+import { Instagram } from '../lib/ContactIcons'
+
 
 const Contact = styled.footer`
   padding: 50px;
@@ -15,9 +18,8 @@ export const Footer = () => {
   return (
     <Contact>
       <p>HK240 is a ceramic studio based in Halland. Every item is unique and made by hand.</p>
+      <a href="mailto:hej@annagustafsson.se?subject=Nice webshop!" target="_blank" rel="noopener noreferrer">Contact me</a>
       <p>This webshop is a project made during Technigo bootcamp 2020. </p>
-      <p>e-mail</p>
-      <p>instagram</p>
       <p>Made by Anna Gustafsson 2020</p>
     </Contact>
   )

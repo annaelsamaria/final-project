@@ -39,7 +39,7 @@ const FilterButtons = styled.button`
   transition: all .25s ease-in-out; 
 
   &:hover {
-    transform: scale(1.05); 
+    background: #ecd6ba;
   }
   `
 

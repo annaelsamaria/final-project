@@ -19,20 +19,19 @@ const ToggleButtons = styled.button`
   font-size: 24px;
   background: transparent;
   outline: none;
-  transition: all .25s ease-in-out; 
+  transition: all .25s ease-in-out;
+  border-bottom: ${(props) => props.underline === true ? "1px solid black" : "none"};
 
   &:hover {
     border-bottom: 1px solid black;
   }
-
-  &.after {
-    border-bottom: 1px solid black;
-  }
 `
+
 
 export const LogIn = () => {
   const [showLogin, setShowLogin] = useState(true)
   const accessToken = useSelector((store) => store.user.login.accessToken)
+
   const handleSignIn = () => {
     setShowLogin(true)
   }
@@ -47,11 +46,13 @@ export const LogIn = () => {
         {!accessToken ?
           <div>
             <ToggleButtons
+              underline={showLogin}
               type="button"
               onClick={handleSignIn}>
               Sign in
         </ToggleButtons>
             <ToggleButtons
+              underline={!showLogin}
               type="button"
               onClick={handleSignUp}>
               Create user

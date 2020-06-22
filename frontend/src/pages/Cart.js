@@ -15,6 +15,7 @@ const RightCart = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
+  z-index: 2;
   width: 300px;
   overflow-y: scroll;
   padding-top: 20px;
@@ -62,14 +63,9 @@ const ToShop = styled(Link)`
   color: black;
   margin: 20px;
   transition: all .2s ease-in-out; 
-  // transition: opacity .25s ease-in-out;
-  // -moz-transition: opacity .25s ease-in-out;
-  // -webkit-transition: opacity .25s ease-in-out;
 
   &:hover {
-    transform: scale(1.1); 
-
-    // opacity: 0.5;
+    background: #8CA4B3;
   }
 `
 

@@ -1,19 +1,23 @@
 import React from 'react'
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
-import { Nav } from '../components/Nav'
-
+import { HomeNav } from '../components/HomeNav'
+// import media_hkmovie from "../assets/media_hkmovie.mp4"
 
 const HomePage = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: pink;
+  // background-image: url(/assets/mediaio_hkmovie.gif);
   height: 100vh;
+  background-size: cover;
+  background-position: center; 
 `
 
 const Logo = styled.img`
+  position: relative;
+  margin-top: 50px;
   width: 300px;
 
   @media (min-width: 667px) {
@@ -26,37 +30,44 @@ const Logo = styled.img`
 `
 
 const ToShop = styled(Link)`
-  display: flex;
+position: relative;
+display: flex;
   align-items: center;
   border: 1px solid black;
   height: 30px;
   font-size: 16px;
-  background: transparent;
   padding: 0 20px;
+  background: #ecd6ba;
   text-decoration: none;
   color: black;
   margin: 20px;
   transition: all .2s ease-in-out; 
-  // transition: opacity .25s ease-in-out;
-  // -moz-transition: opacity .25s ease-in-out;
-  // -webkit-transition: opacity .25s ease-in-out;
 
   &:hover {
-    transform: scale(1.1); 
-
-    // opacity: 0.5;
+    background: transparent;
   }
+`
+
+export const Video = styled.video`
+  position: absolute;
+  overflow: hidden;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 `
 
 
 export const Home = () => {
   return (
     <>
-      <Nav />
+      <HomeNav />
       <HomePage>
+        <Video autoPlay playsInline muted loop>
+          <source src="../assets/media_hkmovie.mp4" type="video/mp4"></source>
+        "Your browser is not supported!"
+      </Video>
         <Logo src="../assets/hk240logo.png" alt="logo"></Logo>
         <ToShop to="/shop">Shop collection</ToShop>
-        {/* <Background src="https://images.unsplash.com/photo-1525974160448-038dacadcc71?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2767&q=80" alt="background"></Background> */}
       </HomePage>
     </>
   )

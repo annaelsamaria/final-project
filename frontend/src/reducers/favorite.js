@@ -11,9 +11,10 @@ export const favorite = createSlice({
       if (existingProduct) {
         existingProduct.quantity += 0
       } else {
-        state.favoriteItems.push({ ...action.payload, quantity: 1 })
+        const newArray = state.favoriteItems.slice()
+        newArray.push({ ...action.payload, quantity: 1 })
+        state.favoriteItems = newArray
       }
-
     },
     removeFavorite: (state, action) => {
       const existingProduct = state.favoriteItems.find((item) => item.sys.id === action.payload.sys.id)

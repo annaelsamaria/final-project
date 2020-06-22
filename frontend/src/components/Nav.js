@@ -32,10 +32,6 @@ const Logo = styled.img`
   -moz-transition: opacity .25s ease-in-out;
   -webkit-transition: opacity .25s ease-in-out;
 
-  &:hover {
-    opacity: 0.7;
-  }
-
   @media (min-width: 667px) {
     margin-bottom: 0px;
     width: 200px;
@@ -49,7 +45,7 @@ const MenuItem = styled(NavLink)`
   transition: all .2s ease-in-out; 
 
   &:hover {
-    border-bottom: 1px solid black;
+    color: #ecd6ba;
   }
 `
 
@@ -67,9 +63,11 @@ const BagButton = styled.button`
   margin-left: 10px;
   padding: 0;
   outline: none;
+  transition: all .2s ease-in-out; 
 
   &:hover {
     cursor: pointer;
+    color: #ecd6ba;
   }
 `
 

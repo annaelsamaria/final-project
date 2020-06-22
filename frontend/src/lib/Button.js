@@ -14,13 +14,13 @@ export const Button = styled.button`
   transition: all .25s ease-in-out; 
 
   &:hover {
-    transform: scale(1.05); 
+    background: #8CA4B3;
   }
 `
 
 const ScrollButton = styled.button`
   font-family: 'Roboto', sans-serif;
-  margin: 20px;
+  margin: 20px 0 40px 0;
   border: 1px solid black;
   height: 30px;
   font-size: 16px;
@@ -31,7 +31,7 @@ const ScrollButton = styled.button`
   transition: all .25s ease-in-out; 
 
   &:hover {
-    transform: scale(1.05); 
+    background: #8CA4B3;
   }
 `
 export const ScrollTopButton = () => {

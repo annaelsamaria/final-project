@@ -1,11 +1,13 @@
 import React from 'react'
-import { logout, getLoginMessage } from '../reducers/user'
+import { logout } from '../reducers/user'
 import { useDispatch, useSelector } from 'react-redux'
 import { ProductCard } from '../components/ProductCard'
 import { Button } from '../lib/Button'
 import styled from 'styled-components/macro'
+import { SecondTitle } from '../lib/Text'
 
 const ProfilePage = styled.section`
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +28,7 @@ export const Profile = () => {
 
   return (
     <ProfilePage>
-      <h2>Welcome {firstName}</h2>
+      <SecondTitle>Welcome {firstName}</SecondTitle>
       <p>This is your page</p>
       <Button type='submit' onClick={(e) => dispatch(logout())}>
         Log out
@@ -34,7 +36,7 @@ export const Profile = () => {
       <h2>Your saved items: </h2>
       <ProductsContainer>
         {favoriteProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.sys.id} product={product} />
         ))}
       </ProductsContainer>
     </ProfilePage>

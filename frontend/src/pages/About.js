@@ -39,7 +39,7 @@ export const About = () => {
       <Nav />
       <AboutSection>
         <ProfileImg src="../assets/anna_2.jpg" alt="Anna"></ProfileImg>
-        <h3>Hello 👋🏼</h3>
+        <h3>Hello <span role="img" aria-label="wave emoji">👋🏼</span></h3>
         <BodyText>HK240 is run by me, Anna Gustafsson from our home outside of Kungsbacka.
         It's a side project that I really enjoy and I always find inspiration when I'm in the studio.
         My latest collection is inspired by nature and I wanted that hand made feeling shine through. Hope you enjoy it.

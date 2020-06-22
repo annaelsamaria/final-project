@@ -20,12 +20,8 @@ const SignInLabel = styled.label`
 export const SignIn = () => {
   const dispatch = useDispatch();
   const accessToken = useSelector((store) => store.user.login.accessToken);
-  const loggedoutMessage = useSelector(
-    (store) => store.user.login.loggedoutMessage
-  );
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
   const [showSummary, setShowSummary] = useState(false);
 
   const handleLogin = (event) => {
@@ -59,8 +55,6 @@ export const SignIn = () => {
             <Button type='submit'>Log in</Button>
           </SignInForm>
         )}
-        {errorMessage && <h1>{errorMessage}</h1>}
-        {loggedoutMessage && <h4>You are logged out!</h4>}
       </div>
     );
   } else {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Link, useParams } from 'react-router-dom';
-import styled from 'styled-components/macro';
+import styled from "styled-components";
 import { cart } from '../reducers/cart'
 import { useDispatch, useSelector } from 'react-redux';
 import { HeartIcon } from '../lib/HeartIcon'
@@ -18,7 +18,6 @@ const ProductPage = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
 `
 
 const ProductContainer = styled.div`
@@ -76,20 +75,18 @@ const SecondaryImg = styled.img`
 `
 
 
+
 export const ProductDetails = () => {
   const { productId } = useParams()
   const dispatch = useDispatch()
-
   const [product, setProduct] = useState(Object);
   const [loading, setLoading] = useState(true);
 
-  //Jag vill veta om en exakt produkt redan ligger i kassan, isf rendera meddelande. 
-  // const itemsAdded = useSelector((store) => (store.cart.items > 0))
-
+  const itemsAdded = useSelector((store) => (store.cart.items))
+  const itemAdded = itemsAdded.find((item) => item.sys.id === productId)
 
   useEffect(() => {
     getProductById(productId).then(page => {
-      console.log("page", page)
       setProduct(page);
       setLoading(false);
     });
@@ -118,8 +115,8 @@ export const ProductDetails = () => {
             </div>
             <HeartIcon product={product} />
             <p>{product.fields.description}</p>
-            {/* <p>{itemsAdded ? "" : "You can only add the same product once"}</p> */}
             <div>
+              <p>{itemAdded ? "(Added to cart)" : ""}</p>
               <Button
                 type="button"
                 onClick={() => dispatch(cart.actions.addItem(product))}>ad to cart
