@@ -4,7 +4,7 @@ import { SecondTitle } from '../lib/Text'
 
 
 const Contact = styled.footer`
-  padding: 20px 0 50px 0;
+  padding: 20px 20px 50px 20px;
   background: #f9f3ea;
   display: flex;
   flex-direction: column;
@@ -27,8 +27,7 @@ export const Footer = () => {
       <Email href="mailto:hej@annagustafsson.se?subject=Nice webshop!" target="_blank" rel="noopener noreferrer">Send e-mail</Email>
 
       <p>HK240 is a ceramic studio based in Halland. Every item is unique and made by hand.</p>
-      <p>This webshop is a project made during Technigo bootcamp 2020. </p>
-      <p>Made by Anna Gustafsson 2020</p>
+      <p>© Anna Gustafsson – Technigo Bootcamp 2020</p>
     </Contact>
   )
 }

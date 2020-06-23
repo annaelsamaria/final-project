@@ -18,6 +18,7 @@ const ShopPage = styled.section`
 const InfoSection = styled.div`
   margin-top: 40px;
   text-align: center;
+  padding: 20px;
 `
 const FilterItems = styled.div`
   display: flex;
