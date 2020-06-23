@@ -11,7 +11,7 @@ const CartProduct = styled.div`
 `
 
 const ProductImg = styled.img`
-  width: 100px;
+  height: 120px;
 `
 
 const ProductWrapper = styled.div`
