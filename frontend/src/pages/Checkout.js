@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { Nav } from '../components/Nav'
 import { ReturnArrow } from '../lib/Return'
+import { SecondTitle } from '../lib/Text'
 
 
 const HomePage = styled.section`
@@ -12,13 +13,20 @@ const HomePage = styled.section`
   min-height: 80vh;
 `
 
+const Cheers = styled.img`
+  margin: 20px;
+`
+
+
 export const Checkout = () => {
   return (
     <>
       <Nav />
       <HomePage>
+        <SecondTitle>Checkout</SecondTitle>
+        <p>Checkout not yet available, but happy to see you here. Hope you like my project.</p>
+        <Cheers src="../assets/checkout.gif" alt="Cheers"></Cheers>
         <ReturnArrow />
-        <img src="../assets/checkout.gif" alt="Leo"></img>
       </HomePage>
     </>
   )
