@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 import { SecondTitle } from '../lib/Text'
 
 
-const Contact = styled.Footer`
+const Contact = styled.footer`
   padding: 20px 0 50px 0;
   background: #f9f3ea;
   display: flex;
