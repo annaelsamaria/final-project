@@ -43,7 +43,7 @@ export const user = createSlice({
 })
 
 export const login = (email, password) => {
-  const LOGIN_URL = 'http://localhost:8080/sessions'
+  const LOGIN_URL = 'https://hk240.herokuapp.com/sessions'
   return (dispatch) => {
     fetch(LOGIN_URL, {
       method: 'POST',
@@ -73,7 +73,7 @@ export const login = (email, password) => {
 }
 
 export const getLoginMessage = () => {
-  const USERS_URL = 'http://localhost:8080/users'
+  const USERS_URL = 'https://hk240.herokuapp.com/users'
   return (dispatch, getState) => {
     const accessToken = getState().user.login.accessToken;
     const userId = getState().user.login.userId
@@ -100,10 +100,10 @@ export const getLoginMessage = () => {
 
 export const logout = () => {
   return (dispatch) => {
-    dispatch(user.actions.setLoginMessage({ LogInMessage: null }));
-    dispatch(user.actions.setErrorMessage({ errorMessage: null }));
-    dispatch(user.actions.setAccessToken({ accessToken: null }));
-    dispatch(user.actions.setUserId({ userId: 0 }));
-    dispatch(user.actions.setLoggedoutMessage({ loggedoutMessage: true }));
+    dispatch(user.actions.setLoginMessage({ LogInMessage: null }))
+    dispatch(user.actions.setErrorMessage({ errorMessage: null }))
+    dispatch(user.actions.setAccessToken({ accessToken: null }))
+    dispatch(user.actions.setUserId({ userId: 0 }))
+    dispatch(user.actions.setLoggedoutMessage({ loggedoutMessage: true }))
   };
 };

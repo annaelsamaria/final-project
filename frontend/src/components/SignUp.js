@@ -21,7 +21,8 @@ const SignUpLabel = styled.label`
   margin-bottom: 5px;
 `
 
-const URL = 'http://localhost:8080/users';
+// const URL = 'http://localhost:8080/users';
+const URL = 'https://hk240.herokuapp.com/users'
 
 export const SignUp = () => {
   const dispatch = useDispatch();

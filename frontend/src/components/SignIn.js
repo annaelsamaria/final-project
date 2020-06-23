@@ -18,16 +18,16 @@ const SignInLabel = styled.label`
 `
 
 export const SignIn = () => {
-  const dispatch = useDispatch();
-  const accessToken = useSelector((store) => store.user.login.accessToken);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showSummary, setShowSummary] = useState(false);
+  const dispatch = useDispatch()
+  const accessToken = useSelector((store) => store.user.login.accessToken)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [showSummary, setShowSummary] = useState(false)
 
   const handleLogin = (event) => {
-    event.preventDefault();
-    dispatch(login(email, password));
-  };
+    event.preventDefault()
+    dispatch(login(email, password))
+  }
 
   if (!accessToken) {
     return (
@@ -56,8 +56,8 @@ export const SignIn = () => {
           </SignInForm>
         )}
       </div>
-    );
+    )
   } else {
-    return <Profile />;
+    return <Profile />
   }
-};
+}

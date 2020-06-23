@@ -18,7 +18,6 @@ import { ui } from 'reducers/ui'
 import { favorite } from 'reducers/favorite'
 
 
-
 const reducer = combineReducers({
   cart: cart.reducer,
   favorite: favorite.reducer,
@@ -29,25 +28,18 @@ const reducer = combineReducers({
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const persistedStateJSON = localStorage.getItem('products');
-// console.log(`persistedStateJSON: ${persistedStateJSON}`);
 let persistedState = {};
 
 if (persistedStateJSON) {
   persistedState = JSON.parse(persistedStateJSON);
 }
-// console.log(`persistedState: ${JSON.stringify(persistedState)}`);
-
-// 2. Create the store using the initial state
 
 const store = createStore(reducer, persistedState, composeEnhancer(applyMiddleware(thunk)))
 
-// 3. Store the state in localstorage on ANY redux state change
 store.subscribe(() => {
   localStorage.setItem('products', JSON.stringify(store.getState()));
 });
 
-
-// const store = configureStore({ reducer })
 
 export const App = () => {
   return (
