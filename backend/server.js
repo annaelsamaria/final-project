@@ -38,9 +38,6 @@ const User = mongoose.model('User', {
   accessToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString('hex'),
-  },
-  savedProducts: {
-    type: [String],
   }
 });
 
@@ -111,18 +108,6 @@ app.post('/sessions', async (req, res) => {
     res.status(400).json({ message: 'Could not log in', errors: err.errors });
   }
 });
-
-
-// post endpoints savedProductsapp.post('/products/:id/save', authenticateUser);
-app.post('/products/:id/save', async (req, res) => {
-  const id = req.params.id;
-  try {
-    const favorite = await User.findOneAndUpdate({ _id: req.user._id }, { $push: { savedProducts: id } })
-    res.json(favorite)
-  } catch (err) {
-    res.status(400).json({ message: 'Could not save product', error: err.errors })
-  }
-})
 
 // Start the server
 app.listen(port, () => {
