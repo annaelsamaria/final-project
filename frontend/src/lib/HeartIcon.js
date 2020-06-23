@@ -14,9 +14,8 @@ const Icon = styled.button`
 const BlackHeart = styled.svg`
   fill: none;
   stroke: black;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke-location: inside;
+  stroke-width: 2px;
   transition: all .25s ease-in-out;
   -moz-transition: all .25s ease-in-out;
   -webkit-transition: all .25s ease-in-out;
@@ -34,11 +33,9 @@ const RedHeart = styled.svg`
   -webkit-transition: all .25s ease-in-out;
 
 &:hover {
-  fill: none;
-  stroke: black;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  // fill: none;
+  // stroke: black;
+  // stroke-width: 2;
 }
 `
 
