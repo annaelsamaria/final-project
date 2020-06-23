@@ -9,7 +9,7 @@ const HomePage = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url(/assets/mediaio_hkmovie.gif);
+  background-image: url(/assets/mediaio_hkmovie.jpg);
   height: 100vh;
   background-size: cover;
   background-position: center; 
