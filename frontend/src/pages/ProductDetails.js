@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from "styled-components";
 import { cart } from '../reducers/cart'
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,13 +33,6 @@ const ProductContainer = styled.div`
   }
 `
 
-const ToShop = styled(Link)`
-  transition: margin-right 0.2s cubic-bezier(0.42, 0, 0.21, 0.99);
-
-  &:hover {
-    margin-right: 5px;
-  }
-`
 
 const ProductImg = styled.img`
   width: 300px;
@@ -100,11 +93,7 @@ export const ProductDetails = () => {
       <ProductPage>
         <ProductContainer>
           <div>
-            <Route path="/shop">
-              <ToShop to="/shop">
-                <ReturnArrow />
-              </ToShop>
-            </Route>
+            <ReturnArrow />
             <ProductImg src={product.fields.mainImage.fields.file.url}
               alt={product.fields.mainImage.fields.title} />
           </div>
