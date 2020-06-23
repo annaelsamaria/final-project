@@ -81,6 +81,7 @@ app.post('/users', async (req, res) => {
       message: 'User created.',
       userId: newUser._id,
       accessToken: newUser.accessToken,
+      firstName,
     });
   } catch (err) {
     res
@@ -102,7 +103,7 @@ app.post('/sessions', async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (user && bcrypt.compareSync(password, user.password)) {
-      res.status(201).json({ userId: user._id, accessToken: user.accessToken });
+      res.status(201).json({ userId: user._id, accessToken: user.accessToken, firstName: user.firstName });
     } else {
       res.json({ notFound: true });
     }

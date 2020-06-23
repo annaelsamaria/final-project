@@ -23,7 +23,7 @@ const FilterItems = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 40px 0 20px 0;
+  margin: 20px 0;
   flex-flow: wrap;
 `
 
@@ -87,7 +87,8 @@ export const Shop = () => {
       <ShopPage>
         <InfoSection>
           <SecondTitle>Shop</SecondTitle>
-          <p>Inspired by the swedish west coastAll items are handmade and unique.</p>
+          <p>Inspired by the swedish west coast, waves, sand and nature.</p>
+          <p>All items are handmade and unique.</p>
           <FilterItems>
             {filterButtons.map(({ name, value }) => (
               <FilterButtons key={name} onClick={() => filterOnClick(value)}>
