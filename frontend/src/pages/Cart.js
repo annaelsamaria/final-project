@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 import { CartItem } from '../components/CartItem'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -25,7 +25,7 @@ const RightCart = styled.div`
   @media (min-width: 667px) {
     width: 400px;
   }
-`;
+`
 
 const CartContent = styled.div`
   display: flex;

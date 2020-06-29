@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import { HomeNav } from '../components/HomeNav'
-// import media_hkmovie from "../assets/media_hkmovie.mp4"
 
 const HomePage = styled.section`
   display: flex;

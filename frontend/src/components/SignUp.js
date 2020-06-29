@@ -6,9 +6,7 @@ import { Button } from '../lib/Button'
 import { Profile } from '../pages/Profile';
 
 
-
 const SignUpContainer = styled.div`
-
 `
 
 const SignUpForm = styled.form`
